@@ -1,0 +1,26 @@
+
+1. Delete all minikube objects:
+     minikube delete --all
+
+2. Start a minikube cluster with 3 nodes:
+    minikube start --nodes 3
+    verify that you have 3 nodes, and get their IP addresses
+
+3. Create a deployment based on the kuard image, but request only 1 replica (pod)
+    kubectl create deployment alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=1 --port=8080
+    On what node does it run?
+
+4. Create a service based on the deployment you have created
+    Use the "expose" command
+
+5. Verify that the service was created.
+
+6. Create a NodePort by editing the service configuration:
+    Change the spec/type to NodePort
+
+7, Find the new NodePort created by Kubernetes for the service:
+    kubectl describe service alpaca-prod
+
+8. Brose the NodePort port, but from an IP address of a node with no pods in it:
+    You should be able to see the application from all node IP addresses (no port-forward)
+

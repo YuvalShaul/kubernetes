@@ -1,0 +1,42 @@
+1. Delete all minikube objects:
+     minikube delete --all
+
+2. Start a minikube cluster with 3 nodes:
+    minikube start --nodes 3
+    verify that you have 3 nodes, and get their IP addresses
+
+3. Create a pod based on the following manifest definition:
+    a. Add healthcheck definition to the manifest, and save as a file.
+    b. Use the command:
+       kubectl apply -f <manifest file name>
++++++++++++++++++++++++++
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kuard
+spec:
+  containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:blue
+    name: kuard
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
++++++++++++++++++++++++++
+
+4. Allow connection to the pod:
+    (local port 3456 in this example)
+    kubectl port-forward kuard 3456:8080
+    Leave this running in a separate terminal.
+
+5. Brose to localhost:3456 (or the port you have used),
+   You should see the kuard web page.
+
+6. Click on the Liveness Probe tab.
+   Press on "Fail" to see health checks fail.
+   Press on "Succeed" to see health checks succeed.
+
+7. Use the following command to monitor events:
+      kubectl describe pod kuard
+
+   Make sure the pod is restarted.

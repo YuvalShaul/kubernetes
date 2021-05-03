@@ -3,8 +3,7 @@
 Info (good links to explain stuff):
     What are cpu-shares ?
         https://gitlab.com/yuval.shaul/devops-links.git
-    Ingress and other ways to expose a service: ClusterIP, NodePort, LoadBalancer
-        https://www.ibm.com/cloud/blog/kubernetes-ingress
+
 
 
 kubectl commands:

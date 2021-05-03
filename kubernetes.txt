@@ -1,0 +1,23 @@
+
+
+Info (good links to explain stuff):
+    What are cpu-shares ?
+        https://gitlab.com/yuval.shaul/devops-links.git
+    Ingress and other ways to expose a service: ClusterIP, NodePort, LoadBalancer
+        https://www.ibm.com/cloud/blog/kubernetes-ingress
+
+
+kubectl commands:
+    https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
+
+
+Useful minikube commands:
+    Getting the status:
+        minikube status
+    Starting minikube with 2 nodes:
+        minikube start --nodes 2
+    Adding another node to minikube:
+        minikube node add multinode-demo-m03
+        (try list/delete and other options)
+    minikube tunnel:
+        https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel

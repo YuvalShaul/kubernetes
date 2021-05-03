@@ -24,3 +24,8 @@
 8. Brose the NodePort port, but from an IP address of a node with no pods in it:
     You should be able to see the application from all node IP addresses (no port-forward)
 
+9. Use the get service command again:
+    kubectl get service
+    Do you understand more fields now?
+
+

@@ -1,0 +1,56 @@
+1. This exercise is a cintinuation of the whole service series:
+    service-1-clusterip.txt
+    service-2-nodeport.txt
+    service-3-loadbalancer.txt
+
+2.  The easiest and preferred way to have high availability,
+    is by having multiple replicas for a deployment.
+
+    Let's increase the number of replicas of our nginx deployment to four(4):
+        kubectl scale deployment nginx --replicas=4
+
+    Then check your deployments and pods:
+        kubectl get deployments
+        kubectl get pods
+
+3. You can also scale down! - e.g. to 2:
+        kubectl scale deployment nginx --replicas=2
+        kubectl get pods
+
+   (notice that some of them are Terminating)
+
+4. Delete the deployment and the service we have created:
+        kubectl delete service nginx
+
+5. T verify that scaling gives us high availability we do these preparations:
+    Create a new deployment based on multitool:
+        kubectl create deployment customnginx --image=praqma/network-multitool
+    Scale it to 4 replicas:
+        kubectl scale deployment customnginx --replicas=4
+    Create a service (is your tunnel still running?):
+        kubectl expose deployment customnginx --port=80 --type=LoadBalancer
+    Verify that the service works:
+        kubectl get services
+
+6. We can verify that the service is working by:
+        curl -s <external ip address of the service>
+
+   Now do the same in a small bash loop:
+         while true; do sleep 1; curl -s <external ip address> ; done
+
+   Notice that we get results from multiple containers.
+
+7. From another terminal - kill 3 pods in a single command, and immediatelly see if there are any failures:
+        kubectl delete pods customnginx-574c867cfd-67kmq customnginx-574c867cfd-mfx5h customnginx-574c867cfd-pdl4p
+
+   Try to find what happened to your pods;
+        kubectl get pods
+
+    So, no failures, and new pods are recreated.
+
+8. Clean up:
+    kubectl delete service customnginx
+    kubectl delete deployments.apps customnginx
+    kubectl delete deployments.apps multitool
+    minikube delete --all
+

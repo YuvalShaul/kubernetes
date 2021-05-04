@@ -1,0 +1,35 @@
+1. So far so good; but, we do not expect the users to know the IP addresses of our worker nodes.
+    Either..
+        Recreate your service:
+            kubectl delete svc nginx
+            kubectl expose deployment nginx --port 80 --type LoadBalancer
+        or
+        Edit your sercie, and change the type:
+            kubectl edit service nginx
+
+    Verify that the type has changed:
+        kubectl get svc
+
+    Note that you still do not have an external IP address (you see <pending>)
+
+2. For minikube:
+    Services of type LoadBalancer can be exposed via the minikube tunnel command.
+    It must be run in a separate terminal window to keep the LoadBalancer running.
+    Ctrl-C in the terminal can be used to terminate the process at which time
+    the network routes will be cleaned up.
+
+    So:
+        minikube tunnel   (you may need to use your sudo credentials)
+    Now go back to see the state of your service:
+        kubectl get service
+
+    You should see you have an external IP address.
+
+    Use:
+        ip route sh
+        to see the route that will take your traffic to the service.
+
+3. Try the service:
+        curl 10.104.56.113 | grep h1
+
+4. Don't delete anything, and continue from here to the next exercise: service-4-high-availability.txt

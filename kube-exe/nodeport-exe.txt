@@ -1,30 +1,39 @@
 
-1. Delete all minikube objects:
-     minikube delete --all
+1. This exercise continue the previous exercise: clusterip-service.txt
 
-2. Start a minikube cluster with 3 nodes:
-    minikube start --nodes 3
-    verify that you have 3 nodes, and get their IP addresses
+2. Choose how to change the service type:
+    2-a.  Delete the created service and recreate it:
+            kubectl get svc
+            kubectl delete svc nginx
+        This time, create it with a different type:
+            kubectl expose deployment nginx --port 80 --type NodePort
 
-3. Create a deployment based on the kuard image, but request only 1 replica (pod)
-    kubectl create deployment alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=1 --port=8080
-    On what node does it run?
+    2-b. Alternatively, edit the service object and change the type to NodePort.
+        kubectl edit service nginx
+        (find the type, change the value to NodePort, save and exit)
 
-4. Create a service based on the deployment you have created
-    Use the "expose" command
 
-5. Verify that the service was created.
+3. Verify that the service type is now ok.
+    kubectl get service
 
-6. Create a NodePort by editing the service configuration:
-    Change the spec/type to NodePort
+    Notice that we still don't have an external IP, but we now have an extra port number for this pod.
+    If we know the external IP address of our nodes, we can connect to this port in any node, even in nodes
+    where there are no pods that belong to the service.
 
-7, Find the new NodePort created by Kubernetes for the service:
-    kubectl describe service alpaca-prod
 
-8. Brose the NodePort port, but from an IP address of a node with no pods in it:
-    You should be able to see the application from all node IP addresses (no port-forward)
+4. Find the IP addresses of all nodes:
+        kubectl get nodes -o wide
+   You can even verify where you pod is actually running:
+        kubectl get pods -o wide
 
-9. Use the get service command again:
+5. Fetch some data from the nginx service, from several nodes (including ones that have no nginx pod:
+    Example:
+        curl -s 192.168.49.2:31415 | grep h1
+        curl -s 192.168.49.3:31415 | grep h1
+        curl -s 192.168.49.4:31415 | grep h1
+        curl -s 192.168.49.5:31415 | grep h1
+
+6. Use the get service command again:
     kubectl get service
     Do you understand more fields now?
 

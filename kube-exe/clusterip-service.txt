@@ -1,0 +1,54 @@
+1. Delete all minikube objects:
+     minikube delete --all
+
+2. Start a minikube cluster with 3 nodes:
+    minikube start --nodes 3
+    verify that you have 3 nodes, and get their IP addresses
+
+3. Create the following 2 deployments:
+    kubectl create deployment multitool --image=praqma/network-multitool
+    kubectl create deployment nginx --image=nginx:1.7.9
+
+    Multitool  (praqma/network-multitool) is an image that contains many networking tool, and designed to help
+    during testing and troubleshooting.
+    See here:
+        https://github.com/Praqma/Network-MultiTool
+    Nginx is a set of web tool (mainly a web server but also a load balancer, mail proxy, reverse proxy etc.)
+    See here for details:
+        https://en.wikipedia.org/wiki/Nginx
+
+4. Expose a ClusterIP type service based on  the nginx  deployment:
+      kubectl expose deployment nginx --port 80 --type ClusterIP
+
+      and verify that the service was created:
+      kubectl get services
+
+      The IP address that you'll see is a Kubernetes internal address, and cannot be seen from the outside,
+      (sn not from the computer in our case).
+      We should be able to access it from inside the cluster (next section)>
+
+5. Verify the name of the multitool pod, and then run a shell inside it:
+
+    kubectl get pods
+
+    kubectl exec -it multitool-74477484b8-cm442 -c network-multitool -- /bin/sh
+    (the command specifies the pod, and then the container inside that pod. Use kubectl describe pods to
+      see the comtainer names inside that pod).
+    Since there is only one container in that pod, you can omit the container part:
+        kubectl exec -it multitool-bla-bla-pod-name -- /bin/sh
+
+6. Find the cluster IP address of the nginx pod:
+    Use (in some other terminal):
+        kubectl get pods -o wide
+    Then use curl to get some data:
+        curl -s 10.244.1.2 | grep h1
+
+    Retry to do the same using DNS !!!
+        curl -s nginx | grep h1
+
+7. Use the describe command to view details.
+   You can see the ClusterIP service IP address there.
+   You can also use nslookup inside the multitool pod:
+        # nslookup nginx
+
+8. Don't delete anything, and continue from here to the next exercise: nodeport-exe.txt

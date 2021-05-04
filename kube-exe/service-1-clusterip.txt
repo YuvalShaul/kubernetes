@@ -51,4 +51,4 @@
    You can also use nslookup inside the multitool pod:
         # nslookup nginx
 
-8. Don't delete anything, and continue from here to the next exercise: nodeport-exe.txt
+8. Don't delete anything, and continue from here to the next exercise: nservice-2-nodeport.txt

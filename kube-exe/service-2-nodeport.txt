@@ -38,3 +38,4 @@
     Do you understand more fields now?
 
 
+7. Don't delete anything, and continue from here to the next exercise: service-3-loadbalancer.txt

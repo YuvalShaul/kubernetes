@@ -1,11 +1,17 @@
 # Infrastructure Lab
 
-[Preparations](#Preparations)
-[IP addresses for nodes](#IP-addresses-for-nodes)
+- [VirtualBox](#Virtual-Box)
+- [GNS3](#GNS3)
+- [Virtual Machines](#Virtual-Machines)
+- [IP addresses for nodes](#IP-addresses-for-nodes)
+- [Add your machines in GNS3](#Add-your-machines-in-GNS3)
+- [Connect to master and nodes](#Connect-to-master-and-nodes)
 
-## Preparations
+## Virtual Box
 
-- [VirtualBox](#1Virtual Box)
+- install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+## GNS3
 - Install (or upgrade) [GNS3](https://www.gns3.com/software/download) (requires registration)
     To upgrade first uninstall (win-x -> apps & features -> find gns3 -> uninstall)
     Check "Gns3 VM", later choose VirtualBox
@@ -16,11 +22,7 @@
         Desktop...
         GNS VM....
 
-## Virtual Box
-
-- install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-
-## Virtual Machines - Run in VirtualBox
+## Virtual Machines
 
 - We are using "Stand Alone" servers for gns3, so don't look for an appliance
 - Download Centos 8.4 from osboxes.org 
@@ -56,33 +58,25 @@
 	nmcli networking off
 	nmcli networking on
 
---------------------------------------------
-  Add your machines in GNS3
+## Add your machines in GNS3
 
-  - First, both "local server" and "GNS3 VM" server should run.
+- First, both "local server" and "GNS3 VM" server should run.
     They start automatocally when you run GNS3, but it may take a minute.
-  - Start edit/preferences, look for VirtualBox and add your machines from there.
-  - Add a simple Switch
-  - Connect all machines to the switch
-  - Add a "Nat Device"
+- Start edit/preferences, look for VirtualBox and add your machines from there.
+- Add a simple Switch
+- Connect all machines to the switch
+- Add a "Nat Device"
 
--------------------------------------------
-
-
-Connect to master and nodes:
+## Connect to master and nodes
 
 I'm using a local Linux (Ubuntu-20) as a host, to control master and nodes.
 
-   - Create a new ssh keypair: 
+- Create a new ssh keypair: 
           ssh-keygen 
-   - copy the key to each machine (you may have problems with fingerprints..)
+- copy the key to each machine (you may have problems with fingerprints..)
           ssh-copy-id osboxes@192.168.122.1
-   - Now connect like this:
+- Now connect like this:
           ssh osboxes@192.168.122.1
 
 Use Terminator (See here: https://dev.to/xeroxism/how-to-install-terminator-a-linux-terminal-emulator-on-steroids-1m3h)
 You can then login and command all nodes at once.
-
--
-
-     

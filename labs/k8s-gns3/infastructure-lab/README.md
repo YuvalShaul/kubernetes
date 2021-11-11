@@ -15,15 +15,20 @@ This lab will guide you through the process of creating a baseline environment t
 - install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 ## GNS3
-- Install [GNS3](https://docs.gns3.com/docs/getting-started/installation/windows)
+- Here's the [Windows GNS3 installation guide](https://docs.gns3.com/docs/getting-started/installation/windows).
 - To upgrade first uninstall (win-x -> apps & features -> find gns3 -> uninstall)
-- Here's the tricky part:
-you should download the VirtualBox (or vmware workstations if you go for it), then make GNS3 use it, [as explained in the guide](https://docs.gns3.com/docs/getting-started/installation/download-gns3-vm).
-- You should use the VM from gns3 (in GNS3 go to help-> setup wizard). Increase vcpu and memory when you do so
-- If all goes well, when you run GNS3 you should see two green lights:
+- Now for the trickiest part.
+You shoudl somehow convince GNS3 to use VirtualBox to run its servers.
+[This is explained here](https://docs.gns3.com/docs/getting-started/installation/download-gns3-vm).
+Increase vcpu and memory when you do so
+You should use the VM from gns3 (in GNS3 go to help-> setup wizard).
+- How do you know you're good?
+If all goes well, when you run GNS3 it will run VirtualBox AND the local dynamips server (this may take some time) and you should be able to see two green lights at the right side of GNS3 window:
         Desktop...
         GNS VM....
-so that you know that GNS3 is running the two servers (although you will probably not use the local dynamips server).
+so that you know that GNS3 is running the two servers.
+You cannot run just the VirtualBox server!!!
+The local (dynamips) server must also run, although you will probably not use it at all.
 
 ## Virtual Machines
 

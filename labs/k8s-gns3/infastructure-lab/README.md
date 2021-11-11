@@ -1,33 +1,37 @@
+# Infrastructure Lab
 
-Prepare:
-  - install (or upgrade) VirtualBox
-  - Install (or upgrade) GNS3 (requires registration)
+[Preparations](#Preparations)
+[IP addresses for nodes](#IP-addresses-for-nodes)
+
+## Preparations
+
+- [VirtualBox](#1Virtual Box)
+- Install (or upgrade) [GNS3](https://www.gns3.com/software/download) (requires registration)
     To upgrade first uninstall (win-x -> apps & features -> find gns3 -> uninstall)
     Check "Gns3 VM", later choose VirtualBox
-  - Download the gns3 VM, extract it and import to VirtualBox.
+- Download the gns3 VM, extract it and import to VirtualBox.
     Then use is from gns3 (see help-> setup wizard)
     Increase vcpu and memory when you do so
-  - If all goes well, you should see two green lights:
+- If all goes well, you should see two green lights:
         Desktop...
         GNS VM....
 
+## Virtual Box
 
- 
+- install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
+## Virtual Machines - Run in VirtualBox
 
---------------------------------------------
-
-Virtual Machines - Run in VirtualBox
-  - We are using "Stand Alone" servers for gns3, so don't look for an appliance
-  - Download Centos 8.4 from osboxes.org 
+- We are using "Stand Alone" servers for gns3, so don't look for an appliance
+- Download Centos 8.4 from osboxes.org 
     link: https://www.osboxes.org/centos/
     user: osboxes pass: osboxes.org
-  - Unzip the downloaded file
-  - Create a Linux (RedHat 64G) machine
-  - 8192 MB of RAM
-  - use your downloaded file as the system disk.
-  - Leave networking as "Not Attached" (let GNS3 handle this)
-  - Clone it carefully - to create 3 workers and 1 master:
+- Unzip the downloaded file
+- Create a Linux (RedHat 64G) machine
+- 8192 MB of RAM
+- use your downloaded file as the system disk.
+- Leave networking as "Not Attached" (let GNS3 handle this)
+- Clone it carefully - to create 3 workers and 1 master:
      - Clone when machine is not working
      - Rename your new machine (master, worker..etc)
      - right-click clone
@@ -37,7 +41,8 @@ Virtual Machines - Run in VirtualBox
 
 --------------------------------------------
 
-IP addresses for nodes:
+## IP addresses for nodes
+
 - These are Centos nodes.
 - Address range should be: 192.168.122.0/24  (I'll explain why later)
 - Configure static IP addresses for master and workers:

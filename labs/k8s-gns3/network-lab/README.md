@@ -1,10 +1,11 @@
 # Network Lab
 
-You should now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
+This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
 It is time to create a network for them.
 
 - [GNS3 Network](#GNS3-Network)
 - [Add All Machines](#Add-All-Machines)
+- [Add NAT device](#Add-NAT-device)
 
 - [IP addresses for nodes](#IP-addresses-for-nodes)
 - [Add your machines in GNS3](#Add-your-machines-in-GNS3)
@@ -26,7 +27,8 @@ It is time to create a network for them.
 
 ## Add NAT device
 
-- Add a "Nat Device", and connect it to the switch.
+- Add a "[Nat Node](https://docs.gns3.com/docs/using-gns3/advanced/the-nat-node/)", and connect it to the switch.
+- **"By default, the NAT node runs a DHCP server with a predefined pool in the 192.168.122.0/24 range."** We will not use the DHCP server, but we'll configure static IP addresses that use this CIDR block to all our machines.
 
 ## IP addresses for nodes
 

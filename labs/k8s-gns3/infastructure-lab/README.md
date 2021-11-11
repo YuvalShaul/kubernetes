@@ -4,10 +4,9 @@ This lab will guide you through the process of creating a baseline environment t
 
 - [VirtualBox](#Virtual-Box)
 - [GNS3](#GNS3)
-- [Virtual Machines](#Virtual-Machines)
-- [IP addresses for nodes](#IP-addresses-for-nodes)
-- [Add your machines in GNS3](#Add-your-machines-in-GNS3)
-- [Connect to master and nodes](#Connect-to-master-and-nodes)
+- [Virtual Machines](#K8S-Virtual-Machines)
+- [Host Machine](#Host-Machine)
+
 
 ## Virtual Box
 
@@ -33,7 +32,7 @@ If all goes well, when you run GNS3 it will run both servers:
 - You cannot run just the VirtualBox server!!!
 The local (dynamips) server must also run, although you will probably not use it at all.
 
-## Virtual Machines
+## K8S Virtual Machines
 
 - We are using "Stand Alone" servers for gns3, so don't look for an appliance
 - Download Centos 8.4 from osboxes.org 
@@ -44,7 +43,7 @@ The local (dynamips) server must also run, although you will probably not use it
 - 8192 MB of RAM
 - use your downloaded file as the system disk.
 - Leave networking as "Not Attached" (let GNS3 handle this)
-- Clone it carefully - to create 3 workers and 1 master:
+- Clone it carefully in VirtualBox - to create 3 workers and 1 master:
      - **Clone when machine is not working**
      - Rename your new machine (master, worker..etc)
      - right-click clone
@@ -52,45 +51,7 @@ The local (dynamips) server must also run, although you will probably not use it
      - Full clone !!!
   - Make sure your new machines can work
 
---------------------------------------------
+## Host Machine
 
-## IP addresses for nodes
-
-- These are Centos nodes.
-- Address range should be: 192.168.122.0/24  (I'll explain why later)
-- Run from VirtualBox and configure static IP addresses for master and workers:
-  - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
-  - BOOTPROTO=static
-  - IPADDR=192.168.122.x (where x is 1,2,3 for workers, 10 for master)
-  - NETMASK=255.255.255.0
-  - GATEWAY=192.168.122.100
-  - to restart networking:
-    - nmcli networking off
-    - nmcli networking on
-
-## Add your machines in GNS3
-
-- First, both "local server" and "GNS3 VM" server should run.
-    They start automatocally when you run GNS3, but it may take a minute.
-- Open the **GNS3:edit/preferences** window, look for the VirtualBox section and add your machines from there.
-- Create a new GNS3 project and add a simple Switch
-- Connect all machines to the switch
-- Add a "Nat Device", and connect it to the switch.
-
-## Connect to master and nodes
-
-I'm using a local Linux (Ubuntu-20) as a host, to control master and nodes.
-
-- Create a new ssh keypair: 
-          ssh-keygen 
-- copy the key to each machine (you may have problems with fingerprints..)
-          ssh-copy-id osboxes@192.168.122.1
-- Now connect like this:
-          ssh osboxes@192.168.122.1
-- Use [Terminator shell](https://dev.to/xeroxism/how-to-install-terminator-a-linux-terminal-emulator-on-steroids-1m3h) on your host machine.
-You can then login and command all nodes at once.
-
-## End result
-
-- You should have a network that looks like this:
-![net](https://user-images.githubusercontent.com/40225170/141266815-7a93fcb9-b0df-496f-a39a-9ed274a4670d.jpg)
+- I'm using a local Linux (Ubuntu-20) as a host, to control master and nodes.
+- Create in using the same method you have used with the K8S nodes.

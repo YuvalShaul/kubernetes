@@ -1,3 +1,62 @@
+# Network Lab
+
+You should now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
+It is time to create a network for them.
+
+- [GNS3 Network](#GNS3-Network)
+- [Add All Machines](#Add-All-Machines)
+
+- [IP addresses for nodes](#IP-addresses-for-nodes)
+- [Add your machines in GNS3](#Add-your-machines-in-GNS3)
+- [Connect to master and nodes](#Connect-to-master-and-nodes)
+
+## GNS3 Network
+
+- Start GNS3, and wait until both local and virtualbox servers are running (2 green lights)
+- Create a new blank project
+- Add a simple switch to it
+- We'll now add machines and connect them to the switch.
+- The end reulst should look like this:
+![net](https://user-images.githubusercontent.com/40225170/141266815-7a93fcb9-b0df-496f-a39a-9ed274a4670d.jpg)
+
+## Add All Machines
+
+- Open the **GNS3:edit/preferences** window, look for the VirtualBox section and add your machines from there.
+- Connect all machines to the switch
+
+## Add NAT device
+
+- Add a "Nat Device", and connect it to the switch.
+
+## IP addresses for nodes
+
+- These are Centos nodes.
+- Address range should be: 192.168.122.0/24  (I'll explain why later)
+- Run from VirtualBox and configure static IP addresses for master and workers:
+  - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+  - BOOTPROTO=static
+  - IPADDR=192.168.122.x (where x is 1,2,3 for workers, 10 for master)
+  - NETMASK=255.255.255.0
+  - GATEWAY=192.168.122.100
+  - to restart networking:
+    - nmcli networking off
+    - nmcli networking on
+
+
+
+## Connect to master and nodes
+
+
+- Create a new ssh keypair: 
+          ssh-keygen 
+- copy the key to each machine (you may have problems with fingerprints..)
+          ssh-copy-id osboxes@192.168.122.1
+- Now connect like this:
+          ssh osboxes@192.168.122.1
+- Use [Terminator shell](https://dev.to/xeroxism/how-to-install-terminator-a-linux-terminal-emulator-on-steroids-1m3h) on your host machine.
+You can then login and command all nodes at once.
+
+
 - create 4 notes on virtualbox (controller, worker1, worker2, user)
   use Ubuntu 18.04.bionic beaver
   (I use osboxes.org ready made vdi files for that)

@@ -1,5 +1,7 @@
 # Infrastructure Lab
 
+This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation. I have tried this on Windows-11 Pro (version 21H2).
+
 - [VirtualBox](#Virtual-Box)
 - [GNS3](#GNS3)
 - [Virtual Machines](#Virtual-Machines)
@@ -9,18 +11,19 @@
 
 ## Virtual Box
 
+- I am using VirtualBox, although GNS3 documentation says that vmware workstation is a better solution. This is because some features of vmware Workstation are not supported om the free version(Player).
 - install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 ## GNS3
-- Install (or upgrade) [GNS3](https://www.gns3.com/software/download) (requires registration)
-    To upgrade first uninstall (win-x -> apps & features -> find gns3 -> uninstall)
-    Check "Gns3 VM", later choose VirtualBox
-- Download the gns3 VM, extract it and import to VirtualBox.
-    Then use is from gns3 (see help-> setup wizard)
-    Increase vcpu and memory when you do so
-- If all goes well, you should see two green lights:
+- Install [GNS3](https://docs.gns3.com/docs/getting-started/installation/windows)
+- To upgrade first uninstall (win-x -> apps & features -> find gns3 -> uninstall)
+- Here's the tricky part:
+you should download the VirtualBox (or vmware workstations if you go for it), then make GNS3 use it, [as explained in the guide](https://docs.gns3.com/docs/getting-started/installation/download-gns3-vm).
+- You should use the VM from gns3 (in GNS3 go to help-> setup wizard). Increase vcpu and memory when you do so
+- If all goes well, when you run GNS3 you should see two green lights:
         Desktop...
         GNS VM....
+so that you know that GNS3 is running the two servers (although you will probably not use the local dynamips server).
 
 ## Virtual Machines
 

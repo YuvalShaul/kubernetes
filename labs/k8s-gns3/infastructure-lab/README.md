@@ -4,8 +4,10 @@ This lab will guide you through the process of creating a baseline environment t
 
 - [VirtualBox](#Virtual-Box)
 - [GNS3](#GNS3)
-- [Virtual Machines](#K8S-Virtual-Machines)
+- [K8S Virtual Machines](#K8S-Virtual-Machines)
 - [Host Machine](#Host-Machine)
+- [Host Machine](#Host-Machine)
+- [End Results](#End-Results)
 
 
 ## Virtual Box
@@ -54,3 +56,14 @@ The local (dynamips) server must also run, although you will probably not use it
 
 - I'm using a local Linux (Ubuntu-20) as a host, to control master and nodes.
 - Create in using the same method you have used with the K8S nodes.
+
+## End Results
+
+- You should have:
+  - a GNS3 running with 2 servers
+  - a VirtualBox installation
+  - 3 kubernetes worker machines: K8S-A, K8S-B, K8S-C
+  - 1 kubernetes master machine: K8S-Master
+  - 1 host machine
+  - 1 GNS3 VM server machine
+- No GNS3 network, we'll build that at the next lab.

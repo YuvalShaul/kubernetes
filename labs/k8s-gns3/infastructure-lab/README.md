@@ -15,7 +15,8 @@ This lab will guide you through the process of creating a baseline environment t
 
 ## GNS3
 - Here's the [Windows GNS3 installation guide](https://docs.gns3.com/docs/getting-started/installation/windows).
-- **To upgrade first uninstall** (win-x -> apps & features -> find gns3 -> uninstall)
+- **To upgrade first uninstall** (right-click on the start button --> Apps & Features --> find gns3 --> uninstall(3 dots on the right side))
+- Download and install. This has many steps, so see the guide [here](https://docs.gns3.com/docs/getting-started/installation/windows/). I also selected the GNS# VM option (chose VirtualBox).
 - **Now for the trickiest part:**
 You should somehow convince GNS3 to use VirtualBox as a server to run appliances (these are you virtual machines).
 [This is explained here](https://docs.gns3.com/docs/getting-started/installation/download-gns3-vm) (increase vcpu and memory when you do so).

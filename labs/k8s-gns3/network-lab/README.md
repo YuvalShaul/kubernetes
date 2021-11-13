@@ -30,11 +30,11 @@ It is time to create a network for them.
 - Add a "[Nat Node](https://docs.gns3.com/docs/using-gns3/advanced/the-nat-node/)", and connect it to the switch.
 - **"By default, the NAT node runs a DHCP server with a predefined pool in the 192.168.122.0/24 range."** We will not use the DHCP server, but we'll configure static IP addresses that use this CIDR block to all our machines.
 
-## IP addresses for nodes
+## IP addresses for K8S nodes
 
 - These are Centos nodes.
-- Address range should be: 192.168.122.0/24  (I'll explain why later)
-- Run from VirtualBox and configure static IP addresses for master and workers:
+- Address range should be: 192.168.122.0/24
+- Run and configure static IP addresses for master and workers:
   - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
   - BOOTPROTO=static
   - IPADDR=192.168.122.x (where x is 1,2,3 for workers, 10 for master)

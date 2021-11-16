@@ -63,20 +63,45 @@ sudo sysctl --system
   - sudo yum remove buildah skopeo podman containers-common atomic-registries docker container-tools
   - sudo rm -rf /etc/containers/* /var/lib/containers/* /etc/docker /etc/subuid* /etc/subgid*
   - sudo cd ~ && rm -rf /.local/share/containers/
-- Then, install containerd. As you can see, we are still using a repo from docker:
+- **Then, install containerd.**
+    As you can see, we are still using a repo from docker:
   - sudo yum install -y yum-utils
   - ```
-     sudo yum-config-manager \
-     --add-repo \
-     https://download.docker.com/linux/centos/docker-ce.repo
-     ```
+    sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    ```
   - sudo yum -y install containerd
-- Now configure containerd:
+
+- **Now configure containerd:**
   - sudo mkdir -p /etc/containerd
   - containerd config default | sudo tee /etc/containerd/config.toml
   - sudo systemctl restart containerd
 
 ## Install K8S packages
 
+- Turn swap off:
+  - sudo swapoff -a
+  - sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+  (this will put a single # character at the beginning of the swap line)
+- Install packages:
+  - cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+- sudo setenforce 0
+- sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+  This will actually turn off SELinux, which is required.
+- Now for the REAL installations:
+  **sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes**
+- sudo systemctl enable --now kubelet
 
+
+## Initializing the Cluster
 

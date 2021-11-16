@@ -40,8 +40,43 @@ It will output the text to both the file in action, and the standard output.
 (You can **cat** that file, and see that the commands are there).
 So the kernel will load these module.
 
+I'll also load those modules right now:
+- **sudo modprobe overlay**
+- **sudo modprobe br_netfilter**
 
+## Some networking configurations for containerd
 
+Enable some required abilities:
+
+cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+> net.bridge.bridge-nf-call-iptables = 1
+> net.ipv4.ip_forward = 1
+> net.bridge.bridge-nf-call-ip6tables = 1
+> EOF
+
+To set those immediatelly:
+sudo sysctl --system
+
+## Install containerd
+
+- First, remove pre-installed docker from your machines:
+  - sudo yum remove buildah skopeo podman containers-common atomic-registries docker container-tools
+  - sudo rm -rf /etc/containers/* /var/lib/containers/* /etc/docker /etc/subuid* /etc/subgid*
+  - sudo cd ~ && rm -rf /.local/share/containers/
+- Then, install containerd. As you can see, we are still using a repo from docker:
+  - sudo yum install -y yum-utils
+  - ```
+     sudo yum-config-manager \
+     --add-repo \
+     https://download.docker.com/linux/centos/docker-ce.repo
+     ```
+  - sudo yum -y install containerd
+- Now configure containerd:
+  - sudo mkdir -p /etc/containerd
+  - containerd config default | sudo tee /etc/containerd/config.toml
+  - sudo systemctl restart containerd
+
+## Install K8S packages
 
 
 

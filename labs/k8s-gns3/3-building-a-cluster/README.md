@@ -48,35 +48,47 @@ I'll also load those modules right now:
 
 Enable some required abilities:
 
-cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+- cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 > net.bridge.bridge-nf-call-iptables = 1
 > net.ipv4.ip_forward = 1
 > net.bridge.bridge-nf-call-ip6tables = 1
 > EOF
 
-To set those immediatelly:
+- To set those immediatelly:
 sudo sysctl --system
+
+- Install iproute-tc package:
+sudo dnf install -y iproute-tc
+- Stop the firewalld service (not recommended for production)
+systemctl stop firewalld.service
 
 ## Install containerd
 
-- First, remove pre-installed docker from your machines:
+<!-- - First, remove pre-installed docker from your machines:
+  **NOT NEEDED**
   - sudo yum remove buildah skopeo podman containers-common atomic-registries docker container-tools
   - sudo rm -rf /etc/containers/* /var/lib/containers/* /etc/docker /etc/subuid* /etc/subgid*
-  - sudo cd ~ && rm -rf /.local/share/containers/
+  - sudo cd ~ && rm -rf /.local/share/containers/ -->
 - **Then, install containerd.**
-    As you can see, we are still using a repo from docker:
-  - sudo yum install -y yum-utils
-  - ```
-    sudo yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
-    ```
-  - sudo yum -y install containerd
-
+  - Download binary:
+    wget https://github.com/containerd/containerd/releases/download/v1.5.7/containerd-1.5.7-linux-amd64.tar.gz
+  - Unzip:
+    tar xvf containerd-1.5.7-linux-amd64.tar.gz
+  - Copy the single binary **containerd** to:
+    /usr/local/bin/containerd
 - **Now configure containerd:**
   - sudo mkdir -p /etc/containerd
-  - containerd config default | sudo tee /etc/containerd/config.toml
-  - sudo systemctl restart containerd
+  - containerd config default | sudo tee /etc/containerd/
+  - Edit the created confit.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
+- **Create and run a containerd service**
+
+  - Create a systemd service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
+  - The ExecStart property points to where your binary file really is.
+  - run and enable the service:
+  systemctl start containerd
+  systemctl enable containerd
+  - Verify it is running:
+  systemctl status containerd
 
 ## Install K8S packages
 
@@ -85,6 +97,7 @@ sudo sysctl --system
   - sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
   (this will put a single # character at the beginning of the swap line)
 - Install packages:
+  [(see here for more details)](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
   - cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -105,3 +118,6 @@ EOF
 
 ## Initializing the Cluster
 
+Initialization is done just on the control node.
+Worker nodes are then joined to the cluster.
+- sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3

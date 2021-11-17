@@ -1,7 +1,16 @@
 # Building a K8S Cluster
 
-This lab will guide you through the process of K8S cluster creation.
+This lab will guide you through the process of K8S cluster creation.  
 By now, you should have already done labs 1 ()
+Note:  
+If, during your efforts commands stop working (not found) when you use **sudo**, do the following:
+
+- to go to user root
+**sudo su**
+- edit the sudoers file:
+**visudo /etc/sudoers**
+- find and disable (put in a comment) the line starting with:
+**# Defaults    secure_path = ...**
 
 ## Setting host names
 It is easier to work with meaningfull hostname.

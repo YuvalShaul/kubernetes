@@ -78,7 +78,7 @@ I'll also load those modules right now:
 **sudo cp ./bin/containerd /usr/local/bin**
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
-  - **containerd config default | sudo tee /etc/containerd/**
+  - **sudo containerd config default | sudo tee /etc/containerd/config.toml**
   - Edit the created confit.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
 - **Create and run a containerd service**  
   - Create a systemd service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)

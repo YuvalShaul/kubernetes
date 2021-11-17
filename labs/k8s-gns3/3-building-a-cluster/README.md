@@ -70,12 +70,12 @@ I'll also load those modules right now:
   - sudo rm -rf /etc/containers/* /var/lib/containers/* /etc/docker /etc/subuid* /etc/subgid*
   - sudo cd ~ && rm -rf /.local/share/containers/ -->
 - **Then, install containerd.**
-  - Download binary:
-    wget https://github.com/containerd/containerd/releases/download/v1.5.7/containerd-1.5.7-linux-amd64.tar.gz
-  - Unzip:
-    tar xvf containerd-1.5.7-linux-amd64.tar.gz
-  - Copy the single binary **containerd** to:
-    /usr/local/bin/containerd
+  - Download binary:  
+  **wget https://github.com/containerd/containerd/releases/download/v1.5.7/containerd-1.5.7-linux-amd64.tar.gz**
+  - Unzip:  
+  **tar xvf containerd-1.5.7-linux-amd64.tar.gz**
+  - Copy the single binary **containerd** to /usr/local/bin:  
+**sudo cp ./bin/containerd /usr/local/bin**
 - **Now configure containerd:**
   - sudo mkdir -p /etc/containerd
   - containerd config default | sudo tee /etc/containerd/

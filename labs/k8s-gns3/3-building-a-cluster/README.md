@@ -29,7 +29,7 @@ cat << EOF | sudo tee /etc/modules-load.d/containerd.conf
 Explanation:
 - The **cat** command is reading from a [here document](https://tldp.org/LDP/abs/html/here-docs.html).
 To understand here docs, try them with a word different from EOF.
-I have tried it with my name:
+I have tried it with my name:  
 *cat << yuval
 Hello  
 from a  
@@ -46,9 +46,8 @@ I'll also load those modules right now:
 
 ## Some networking configurations for containerd
 
-Enable some required abilities:
-
-- cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+- Enable some required abilities:  
+cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 > net.bridge.bridge-nf-call-iptables = 1  
 > net.ipv4.ip_forward = 1  
 > net.bridge.bridge-nf-call-ip6tables = 1  

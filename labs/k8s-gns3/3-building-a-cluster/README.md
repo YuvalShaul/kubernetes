@@ -22,8 +22,8 @@ Here are the lines I added to all of my master and nodes:
 ## Enable kernel modules for containerd
 
 cat << EOF | sudo tee /etc/modules-load.d/containerd.conf
-> overlay
-> br_netfilter
+> overlay  
+> br_netfilter  
 > EOF
 
 Explanation:

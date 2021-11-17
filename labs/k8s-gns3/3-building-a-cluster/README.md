@@ -54,13 +54,13 @@ I'll also load those modules right now:
 \> net.bridge.bridge-nf-call-ip6tables = 1  
 \> EOF**  
 
-- To set those immediatelly:
-sudo sysctl --system
-
-- Install iproute-tc package:
-sudo dnf install -y iproute-tc
-- Stop the firewalld service (not recommended for production)
-systemctl stop firewalld.service
+- To set those immediatelly:  
+**sudo sysctl --system**  
+- Install iproute-tc package:  
+**sudo dnf install -y iproute-tc**  
+- Stop the firewalld service (not recommended for production):  
+**systemctl stop firewalld.service**  
+(there is a better option - enable those specific ports we really need, see [here](https://www.tecmint.com/install-a-kubernetes-cluster-on-centos-8/)).
 
 ## Install containerd
 

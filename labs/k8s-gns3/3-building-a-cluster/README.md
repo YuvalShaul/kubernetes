@@ -31,19 +31,19 @@ Here are the lines I added to all of my master and nodes:
 ## Enable kernel modules for containerd
 
 **cat << EOF | sudo tee /etc/modules-load.d/containerd.conf  
-\> overlay  
-\> br_netfilter  
-\> EOF**
+overlay  
+br_netfilter  
+EOF**
 
 Explanation:
 - The **cat** command is reading from a [here document](https://tldp.org/LDP/abs/html/here-docs.html).
 To understand here docs, try them with a word different from EOF.
 I have tried it with my name:  
 **cat << yuval  
-\>Hello  
-\>from a  
-\>here doc.  
-\>yuval**  
+Hello  
+from a  
+here doc.  
+yuval**  
 
 - The **tee** command is reading the output of cat (that's because of the **|** pipeline symbol).
 It will output the text to both the file in action, and the standard output.
@@ -58,10 +58,10 @@ I'll also load those modules right now:
 
 - Enable some required abilities:  
 **cat << EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf  
-\> net.bridge.bridge-nf-call-iptables = 1  
-\> net.ipv4.ip_forward = 1  
-\> net.bridge.bridge-nf-call-ip6tables = 1  
-\> EOF**  
+net.bridge.bridge-nf-call-iptables = 1  
+net.ipv4.ip_forward = 1  
+net.bridge.bridge-nf-call-ip6tables = 1  
+EOF**  
 
 - To set those immediatelly:  
 **sudo sysctl --system**  
@@ -108,15 +108,15 @@ I'll also load those modules right now:
 - Install packages:  
   [(see here for more details)](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
   - cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo  
-\>[kubernetes]  
-\>name=Kubernetes  
-\>baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch  
-\>enabled=1  
-\>gpgcheck=1  
-\>repo_gpgcheck=1  
+[kubernetes]  
+name=Kubernetes  
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch  
+enabled=1  
+gpgcheck=1  
+repo_gpgcheck=1  
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-\>exclude=kubelet kubeadm kubectl  
-\>EOF  
+exclude=kubelet kubeadm kubectl  
+EOF  
 - Disable SELinux:  
   - **sudo setenforce 0**
   - **sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config**  
@@ -124,7 +124,6 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 - Now for the REAL installations:  
   **sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes**
 - **sudo systemctl enable --now kubelet**
-
 
 ## Initializing the Cluster
 

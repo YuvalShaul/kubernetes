@@ -82,11 +82,11 @@ I'll also load those modules right now:
   - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
   Do not restart containerd service, as you have not created the service yet!
 - **Create and run a containerd service**  
-  - Create a systemd service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
+  - Create a systemd containerd.service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
   - The ExecStart property points to where your binary file really is.
-  - run and enable the service:
-  systemctl start containerd
-  systemctl enable containerd
+  - run and enable the service:  
+    - **systemctl start containerd**
+    - **systemctl enable containerd**
   - Verify it is running:
   systemctl status containerd
 

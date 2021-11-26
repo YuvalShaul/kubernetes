@@ -1,7 +1,7 @@
-# Building a K8S Cluster
+# 3 - Building a K8S Cluster
 
 This lab will guide you through the process of K8S cluster creation.  
-By now, you should have already done labs 1 ()
+By now, you should have already done [labs-1](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab), [lab-2](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/2-network-lab)  
 Note:  
 If, during your efforts commands stop working (not found) when you use **sudo**, do the following:
 
@@ -13,20 +13,20 @@ If, during your efforts commands stop working (not found) when you use **sudo**,
 **# Defaults    secure_path = ...**
 
 ## Setting host names
-It is easier to work with meaningfull hostname.
-Command:
-  **sudo hostnamectl set-hostname <host-name>**  (e.g: k8s-a, k8s-b, k8s-c k8s-control)
+It is easier to work with meaningfull hostname.  
+Command:  
+  **sudo hostnamectl set-hostname <host-name>**  (e.g: k8s-a, k8s-b, k8s-c k8s-control)  
 Then, logout and login, to enable the change.
 
 ## Edit /etc/hosts
 
-Make it easier to access each host.
-Update all /etc/hosts files to know each other.
-Here are the lines I added to all of my master and nodes:
-192.168.122.10 k8s-control
-192.168.122.11 k8s-a
-192.168.122.12 k8s-b
-192.168.122.13 k8s-c
+Make it easier to access each host.  
+Update all /etc/hosts files so that all noeds know each other.  
+Here are the lines I added to all of my master and nodes:  
+192.168.122.10 k8s-control  
+192.168.122.11 k8s-a  
+192.168.122.12 k8s-b  
+192.168.122.13 k8s-c  
 
 ## Enable kernel modules for containerd
 

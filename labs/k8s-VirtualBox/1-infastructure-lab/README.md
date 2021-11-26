@@ -22,14 +22,13 @@ This lab will guide you through the process of creating a baseline environment t
 
 ## K8S Virtual Machines
 
-- We are using "Stand Alone" servers for gns3, so don't look for an appliance
-- Download Centos 8.4 from osboxes.org 
+- Download Centos 8.4 (server) from osboxes.org 
     link: https://www.osboxes.org/centos/
     user: osboxes pass: osboxes.org
-- Unzip the downloaded file
-- Create a Linux (RedHat 64G) machine
+- Unzip (I use [7z](https://www.7-zip.org/download.html)) the downloaded file - this is a virtual disk image (VDI) file.
+- VirtualBox: Create a Linux (RedHat 64G) machine
 - 8192 MB of RAM
-- Create a new virtual machine and use your downloaded file as the system disk.
+- Use your downloaded VDI file as the system disk.
 - Leave networking as "Not Attached" (let GNS3 handle this)
 - Clone it carefully in VirtualBox - to create 3 workers and 1 master:
      - **Clone when machine is not working**

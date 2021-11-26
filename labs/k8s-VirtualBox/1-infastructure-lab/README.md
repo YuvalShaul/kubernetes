@@ -3,7 +3,6 @@
 This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation. I have tried this on Windows-11 Pro (version 21H2).
 
 - [VirtualBox](#Virtual-Box)
-- [GNS3](#GNS3)
 - [K8S Virtual Machines](#K8S-Virtual-Machines)
 - [Host Machine](#Host-Machine)
 - [Host Machine](#Host-Machine)
@@ -12,26 +11,14 @@ This lab will guide you through the process of creating a baseline environment t
 
 ## Virtual Box
 
-- I am using VirtualBox, although GNS3 documentation says that vmware workstation is a better solution. This is because some features of vmware Workstation are not supported om the free version(Player).
 - install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-
-## GNS3
-- Here's the [Windows GNS3 installation guide](https://docs.gns3.com/docs/getting-started/installation/windows).
-- **To upgrade first uninstall** (right-click on the start button --> Apps & Features --> find gns3 --> uninstall(3 dots on the right side))
-- Download and install. This has many steps, so see the guide [here](https://docs.gns3.com/docs/getting-started/installation/windows/). I also selected the GNS# VM option (chose VirtualBox).
-Note where the VM zipfile is downloaded to, and do not install the optional SolarWinds tools.
-- Extract the virtual machine zip file. I was using 7zip for that. Then, run VirtualBox and choose File-> I,port Appliance to import the "GNS3 VM.ova" file. This will create your VM server that GNS3 will start automatically. Configure a higher memory for the new virtual machine (depending on your hardware memory).
-- You should convince GNS3 to use that VM so look at: **GNS3: help-> setup wizard**
-- How do you know you're good?
-If all goes well, when you run GNS3 it will run both servers:
-
-  - VirtualBox
-  - the local dynamips server (This may take some time...)
-- You should be able to see **two green lights** at the right side of GNS3 window:
-  - Desktop...
-  - GNS VM....
-- You cannot run just the VirtualBox server!!!
-The local (dynamips) server must also run, although you will probably not use it at all.
+- I am using 6.1.30 for this installation
+- The extension pack is not needed for the lab
+- The setup program will issue a warning about an 
+  interface to be installed. This is OK.
+- Add the following directory into your path:
+    C:\Program Files\Oracle\VirtualBox
+  so that you can run cli commands.
 
 ## K8S Virtual Machines
 

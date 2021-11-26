@@ -35,6 +35,7 @@ This lab will guide you through the process of creating a baseline environment t
   - Rename your new machine (k8s-Master, k8s-A, k8s-B, k8s-C)
   - create new MAC addresses
   - Full clone !!!
+- Configure 2 or more CPUs for your master machine( settings/system).  
 - Make sure your new machines can work
 
 ## Host Machine

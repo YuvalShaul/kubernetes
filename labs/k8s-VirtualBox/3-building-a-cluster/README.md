@@ -80,7 +80,7 @@ EOF**
   - Add the repository:  
   **sudo yum-config-manager \  
   --add-repo \  
-  https://download.docker.com/linux/centos/docker-ce.repo**  
+  https&#xfeff;://download.docker.com/linux/centos/docker-ce.repo**  
 - Remove conflicting packages:  
 **sudo yum remove -y podman buildah**  
 - Install the containerd.io package:  
@@ -90,8 +90,8 @@ EOF**
 
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
-  - **sudo /usr/local/bin/containerd config default | sudo tee /etc/containerd/config.toml**
-  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
+  - **sudo /usr/bin/containerd config default | sudo tee /etc/containerd/config.toml**
+  <!-- - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
   Do not restart containerd service, as you have not created the service yet!
 - **Create and run a containerd service**  
   - Create a systemd containerd.service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
@@ -100,14 +100,13 @@ EOF**
     - **systemctl start containerd**
     - **systemctl enable containerd**
   - Verify it is running:
-  systemctl status containerd
+  systemctl status containerd -->
 
 ## Install K8S packages
 
 - Turn swap off:
   - **sudo swapoff -a**
-  - **sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab**  
-  (this will put a single # character at the beginning of the swap line)
+  - Edit /etc/fstab and insert a '#' at the beginning of the line specifying 'swap'.
 - Install packages:  
   [(see here for more details)](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
   - cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo  

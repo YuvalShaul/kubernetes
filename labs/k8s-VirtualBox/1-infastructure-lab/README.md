@@ -1,4 +1,4 @@
-# Infrastructure Lab
+# 1 - Infrastructure Lab
 
 This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation. I have tried this on Windows-11 Pro (version 21H2).
 
@@ -50,3 +50,5 @@ This lab will guide you through the process of creating a baseline environment t
   - 1 kubernetes master machine: k8s-Master
   - 1 host machine
 - We'll handle networking at the next lab.
+
+(goto [2-Network Lab](https://github.com/YuvalShaul/kubernetes/blob/main/labs/k8s-VirtualBox/2-network-lab/README.md))

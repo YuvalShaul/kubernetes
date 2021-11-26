@@ -1,5 +1,6 @@
-# Network Lab
+# 2 - Network Lab
 
+(back to [1-Infrastructure Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab))
 This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
 It is now the time to create a network for them.
 

@@ -37,8 +37,8 @@ EOF**
 
 Explanation:
 - The **cat** command is reading from a [here document](https://tldp.org/LDP/abs/html/here-docs.html).
-To understand here docs, try them with a word different from EOF.
-I have tried it with my name:  
+To understand here docs, try them with a word different from EOF.  
+Here's and example with my name as a marker:  
 **cat << yuval  
 Hello  
 from a  
@@ -67,24 +67,27 @@ EOF**
 **sudo sysctl --system**  
 - Install iproute-tc package:  
 **sudo dnf install -y iproute-tc**  
-- Stop the firewalld service (not recommended for production):  
+- Stop and disable the firewalld service (not recommended for production):  
 **systemctl stop firewalld.service**  
+**systemctl disable firewalld.service**  
 (there is a better option - enable those specific ports we really need, see [here](https://www.tecmint.com/install-a-kubernetes-cluster-on-centos-8/)).
 
 ## Install containerd
 
-<!-- - First, remove pre-installed docker from your machines:
-  **NOT NEEDED**
-  - sudo yum remove buildah skopeo podman containers-common atomic-registries docker container-tools
-  - sudo rm -rf /etc/containers/* /var/lib/containers/* /etc/docker /etc/subuid* /etc/subgid*
-  - sudo cd ~ && rm -rf /.local/share/containers/ -->
-- **Then, install containerd.**
-  - Download binary:  
-  **wget https://github.com/containerd/containerd/releases/download/v1.5.7/containerd-1.5.7-linux-amd64.tar.gz**
-  - Unzip:  
-  **tar xvf containerd-1.5.7-linux-amd64.tar.gz**
-  - Copy the single binary **containerd** to /usr/local/bin:  
-**sudo cp ./bin/containerd /usr/local/bin**
+- Set up the Docker repository for CentOS:  
+  - Install the yum-utils package:  
+  sudo yum install -y yum-utils  
+  - Add the repository:  
+  sudo yum-config-manager \  
+    --add-repo \  
+    https://download.docker.com/linux/centos/docker-ce.repo  
+- Remove conflicting packages:  
+sudo yum remove -y podman buildah
+- Install the containerd.io package:  
+sudo yum install -y containerd.io  
+
+## Configure containerd
+
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
   - **sudo /usr/local/bin/containerd config default | sudo tee /etc/containerd/config.toml**

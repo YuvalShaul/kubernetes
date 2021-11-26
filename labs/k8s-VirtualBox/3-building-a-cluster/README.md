@@ -91,7 +91,7 @@ EOF**
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
   - **sudo /usr/bin/containerd config default | sudo tee /etc/containerd/config.toml**
-  <!-- - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
+  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
   Do not restart containerd service, as you have not created the service yet!
 - **Create and run a containerd service**  
   - Create a systemd containerd.service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
@@ -100,7 +100,7 @@ EOF**
     - **systemctl start containerd**
     - **systemctl enable containerd**
   - Verify it is running:
-  systemctl status containerd -->
+  systemctl status containerd
 
 ## Install K8S packages
 

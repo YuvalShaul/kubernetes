@@ -91,16 +91,7 @@ EOF**
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
   - **sudo /usr/bin/containerd config default | sudo tee /etc/containerd/config.toml**
-  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
-  Do not restart containerd service, as you have not created the service yet!
-- **Create and run a containerd service**  
-  - Create a systemd containerd.service file as described [here](https://github.com/containerd/containerd/blob/main/docs/ops.md) and put it in /etc/systemd/system (or better in /usr/lib/systemd/system, and a soft-link)
-  - The ExecStart property points to where your binary file really is.
-  - run and enable the service:  
-    - **systemctl start containerd**
-    - **systemctl enable containerd**
-  - Verify it is running:
-  systemctl status containerd
+  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)    
 
 ## Install K8S packages
 
@@ -132,3 +123,9 @@ EOF
 Initialization is done just on the control node.
 Worker nodes are then joined to the cluster.
 - sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3
+- Use the returned join command with the worker nodes.
+- Run these following commands in you master node - as a regular user:
+  - mkdir -p $HOME/.kube
+  - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  - sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- Use **kubectl get nodes** to see the joined nodes.

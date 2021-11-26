@@ -76,15 +76,15 @@ EOF**
 
 - Set up the Docker repository for CentOS:  
   - Install the yum-utils package:  
-  sudo yum install -y yum-utils  
+  **sudo yum install -y yum-utils**  
   - Add the repository:  
-  sudo yum-config-manager \  
-    --add-repo \  
-    https://download.docker.com/linux/centos/docker-ce.repo  
+  **sudo yum-config-manager \  
+  --add-repo \  
+  https://download.docker.com/linux/centos/docker-ce.repo**  
 - Remove conflicting packages:  
-sudo yum remove -y podman buildah
+**sudo yum remove -y podman buildah**  
 - Install the containerd.io package:  
-sudo yum install -y containerd.io  
+**sudo yum install -y containerd.io**  
 
 ## Configure containerd
 

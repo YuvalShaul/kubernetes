@@ -1,6 +1,6 @@
 # 2 - Network Lab
 
-(back to [1-Infrastructure Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab))
+(back to [1-Infrastructure Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab))  
 This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
 It is now the time to create a network for them.
 
@@ -14,7 +14,7 @@ It is now the time to create a network for them.
 
 - "**Nat Service**" is explained [here](https://www.virtualbox.org/manual/ch06.html#network_nat_service)
 - If you have completed the first lab, you should be able to use the VirtualBox command-line interface.
-- Add a new NAT network (I name it **k8s-nat**):
+- Add a new NAT network (I name it **k8s-nat**):  
    **VBoxManage natnetwork add --netname k8s-nat --network "192.168.122.0/24" --enable --dhcp off**
 - Now, for each of you machines, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".
 - Open the "Advanced" option there, and make sure that the "Cable Connected" is checked.
@@ -41,8 +41,8 @@ It is now the time to create a network for them.
 - Now connect like this:
           ssh osboxes@192.168.122.10
 - Use [Terminator shell](https://dev.to/xeroxism/how-to-install-terminator-a-linux-terminal-emulator-on-steroids-1m3h) on your host machine.
-You can then login and command all nodes at once.
-https://terminator-gtk3.readthedocs.io/en/latest/
+You can then login and command all nodes at once.  
+https://terminator-gtk3.readthedocs.io/en/latest/  
 To install terminator:
   - **sudo add-apt-repository ppa:gnome-terminator**
   - **sudo apt-get update**

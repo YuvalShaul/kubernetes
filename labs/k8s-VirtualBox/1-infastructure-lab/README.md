@@ -29,27 +29,24 @@ This lab will guide you through the process of creating a baseline environment t
 - VirtualBox: Create a Linux (RedHat 64G) machine
 - 8192 MB of RAM
 - Use your downloaded VDI file as the system disk.
-- Leave networking as "Not Attached" (let GNS3 handle this)
 - Clone it carefully in VirtualBox - to create 3 workers and 1 master:
-     - **Clone when machine is not working**
-     - Rename your new machine (master, worker..etc)
-     - right-click clone
-     - create new MAC addresses
-     - Full clone !!!
-  - Make sure your new machines can work
+  - **Clone when machine is not working**
+  - right-click clone
+  - Rename your new machine (k8s-Master, k8s-A, k8s-B, k8s-C)
+  - create new MAC addresses
+  - Full clone !!!
+- Make sure your new machines can work
 
 ## Host Machine
 
+- Create another machine to be used as a host - to connect and configure.
 - I'm using a local Linux (Ubuntu-20) as a host, to control master and nodes.
-- Create in using the same method you have used with the K8S nodes.
 
 ## End Results
 
 - You should have:
-  - a GNS3 running with 2 servers
   - a VirtualBox installation
-  - 3 kubernetes worker machines: K8S-A, K8S-B, K8S-C
-  - 1 kubernetes master machine: K8S-Master
+  - 3 kubernetes worker machines: k8s-A, k8s-B, k8s-C
+  - 1 kubernetes master machine: k8s-Master
   - 1 host machine
-  - 1 GNS3 VM server machine
-- No GNS3 network, we'll build that at the next lab.
+- We'll handle networking at the next lab.

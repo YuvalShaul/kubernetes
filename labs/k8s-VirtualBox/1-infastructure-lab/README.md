@@ -13,19 +13,19 @@ I have tried this on Windows-11 Pro (version 21H2).
 ## Virtual Box
 
 - install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- I am using 6.1.30 for this installation
-- The extension pack is not needed for the lab
-- The setup program will issue a warning about an 
-  interface to be installed. This is OK.
+- I am using 6.1.30 for this installation.
+- The extension pack is not needed for the lab.
+- The setup program will issue a warning about an interface to be installed.  
+This is OK.
 - Add the following directory into your path:
     C:\Program Files\Oracle\VirtualBox
-  so that you can run cli commands.
+  so that you can run VirtualBox cli commands.
 
 ## K8S Virtual Machines
 
-- Download Centos 8.4 (server) from osboxes.org 
-    link: https://www.osboxes.org/centos/
-    user: osboxes pass: osboxes.org
+- Download Centos 8.4 (server) from osboxes.org  
+    link: https://www.osboxes.org/centos/  
+    user: osboxes    pass: osboxes.org
 - Unzip (I use [7z](https://www.7-zip.org/download.html)) the downloaded file - this is a virtual disk image (VDI) file.
 - VirtualBox: Create a Linux (RedHat 64G) machine
 - 8192 MB of RAM

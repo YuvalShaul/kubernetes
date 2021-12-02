@@ -1,6 +1,7 @@
 # 1 - Infrastructure Lab
 
-This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation. I have tried this on Windows-11 Pro (version 21H2).
+This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation.  
+I have tried this on Windows-11 Pro (version 21H2).
 
 - [VirtualBox](#Virtual-Box)
 - [K8S Virtual Machines](#K8S-Virtual-Machines)

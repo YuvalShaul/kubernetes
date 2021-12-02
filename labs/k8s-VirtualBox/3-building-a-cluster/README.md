@@ -87,9 +87,7 @@ EOF**
 **sudo yum remove -y podman buildah**  
 - Install the containerd.io package:  
 **sudo yum install -y containerd.io**  
-- Start and enable containerd:  
-sudo systemctl enable containerd  
-sudo systemctl start containerd
+
 
 ## Configure containerd
 
@@ -97,6 +95,9 @@ sudo systemctl start containerd
   - **sudo mkdir -p /etc/containerd**
   - **sudo /usr/bin/containerd config default | sudo tee /etc/containerd/config.toml**
   - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)    
+  - Start and enable containerd:  
+sudo systemctl enable containerd  
+sudo systemctl start containerd
 
 ## Install K8S packages
 
@@ -125,12 +126,22 @@ EOF
 
 ## Initializing the Cluster
 
-Initialization is done just on the control node.
+Initialization of the cluster is done just on the control node.
 Worker nodes are then joined to the cluster.
-- sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3
-- Use the returned join command with the worker nodes.
-- Run these following commands in you master node - as a regular user:
+When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
+- Init your cluster by typing the following command:  
+sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3
+- Run the following commands in you master node - as a regular user:
   - mkdir -p $HOME/.kube
   - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- Install networking for the cluster:  
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
+## Join Worker Nodes
+
+- Run this command on the control node to get the join command for the worker nodes.  
+**(Do not use the join command you see at the end of the init command at the control node!!!)**  
+kubeadm token create --print-join-command  
+- Run the output command on each worker node.
 - Use **kubectl get nodes** to see the joined nodes.

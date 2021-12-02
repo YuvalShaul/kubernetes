@@ -78,7 +78,7 @@ EOF**
   - Install the yum-utils package:  
   **sudo yum install -y yum-utils**  
   - Add the repository:  
-  
+
   sudo yum-config-manager \  
   --add-repo \  
   https://download.docker.com/linux/centos/docker-ce.repo  
@@ -87,6 +87,9 @@ EOF**
 **sudo yum remove -y podman buildah**  
 - Install the containerd.io package:  
 **sudo yum install -y containerd.io**  
+- Start and enable containerd:  
+sudo systemctl enable containerd  
+sudo systemctl start containerd
 
 ## Configure containerd
 

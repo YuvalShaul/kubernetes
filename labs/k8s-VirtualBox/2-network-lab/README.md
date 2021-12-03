@@ -20,23 +20,19 @@ It is now the time to create a network for them.
 
 ## IP addresses
 
-- Run and configure static IP addresses for master and workers:
+- Run all nodes, then configure static IP addresses for master and workers.
+- (use **right-ctrl** to from the mouse capture of the virtual machine window)
   - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
   - BOOTPROTO=static
   - IPADDR=192.168.122.x (where x is 11,12,13 for k8s-A, k8s-B, k8s-C, 10 for k8s-Master, 100 for the host)
   - NETMASK=255.255.255.0
   - GATEWAY=192.168.122.1
-  - to restart networking:
-    - nmcli networking off
-    - nmcli networking on
+  - restart your machines
 
 ## Connect host to master and nodes
 
-- Create a new ssh keypair:
-          ssh-keygen
-- copy the key to each machine (you may have problems with fingerprints..)
-          ssh-copy-id osboxes@192.168.122.10
-- Now connect like this:
+- SSH should work out-of-the-box
+- You can connect like this:
           ssh osboxes@192.168.122.10
 - Use [Terminator shell](https://dev.to/xeroxism/how-to-install-terminator-a-linux-terminal-emulator-on-steroids-1m3h) on your host machine.
 You can then login and command all nodes at once.  

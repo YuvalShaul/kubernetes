@@ -22,7 +22,7 @@ Then, logout and login, to enable the change.
 
 Make it easier to access each host.  
 Update all /etc/hosts files so that all noeds know each other.  
-Here are the lines I added to all of my master and nodes:  
+Here are the lines I added to all of my control and worker nodes:  
 192.168.122.10 k8s-control  
 192.168.122.11 k8s-a  
 192.168.122.12 k8s-b  
@@ -131,7 +131,7 @@ Worker nodes are then joined to the cluster.
 When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
 - Init your cluster by typing the following command:  
 sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3
-- Run the following commands in you master node - as a regular user:
+- Run the following commands in you control node - as a regular user (no sudo):
   - mkdir -p $HOME/.kube
   - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config

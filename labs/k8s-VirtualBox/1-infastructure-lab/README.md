@@ -23,12 +23,12 @@ This is OK.
 
 ## K8S Virtual Machines
 
-- Download Centos 8.4 (server) from osboxes.org  
+- Download Centos 8.4 (server, VirtualBox, vdi file) from osboxes.org  
     link: https://www.osboxes.org/centos/  
-    user: osboxes    pass: osboxes.org
+    user: **osboxes**    pass: **osboxes.org**
 - Unzip (I use [7z](https://www.7-zip.org/download.html)) the downloaded file - this is a virtual disk image (VDI) file.
-- VirtualBox: Create a Linux (RedHat 64G) machine
-- 8192 MB of RAM
+- VirtualBox: Create a Linux (RedHat 64G) machine (for first worker node)
+- 8192 MB of RAM - 1 virtual cpu (2 for the control node later)
 - Use your downloaded VDI file as the system disk.
 - Clone it carefully in VirtualBox - to create 3 workers nodes and one control node:
   - **Clone when machine is not working**

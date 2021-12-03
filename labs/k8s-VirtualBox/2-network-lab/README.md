@@ -4,13 +4,11 @@
 This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
 It is now the time to create a network for them.
 
-- [Add All Machines](#Add-All-Machines)
-- [Add NAT Node](#Add-NAT-Node)
-- [GNS3 Network](#GNS3-Network)
+- [Configure NAT Networking](#Configure-NAT-Networking)
 - [IP addresses](#IP-addresses)
 - [Connect host to master and nodes](#Connect-host-to-master-and-nodes)
 
-## Configure NAT networking
+## Configure NAT Networking
 
 - "**Nat Service**" is explained [here](https://www.virtualbox.org/manual/ch06.html#network_nat_service)
 - If you have completed the first lab, you should be able to use the VirtualBox command-line interface.
@@ -47,3 +45,5 @@ To install terminator:
   - **sudo add-apt-repository ppa:gnome-terminator**
   - **sudo apt-get update**
   - **sudo apt-get install terminator**
+
+(go to [3 - Building a K8S Cluster](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/3-building-a-cluster))  

@@ -144,7 +144,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 - Run this command on the control node to get the join command for the worker nodes.  
 **(Do not use the join command you see at the end of the init command at the control node!!!)**  
-**kubeadm token create --print-join-command  **
+**kubeadm token create --print-join-command**
 - Run the output command on each worker node(add sudo).
 - Use **kubectl get nodes** to see the joined nodes.  
 It may take a few minutes until the status of the nodes becomes **Ready**.

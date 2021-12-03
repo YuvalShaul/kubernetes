@@ -94,7 +94,8 @@ EOF**
 - **Now configure containerd:**
   - **sudo mkdir -p /etc/containerd**
   - **sudo /usr/bin/containerd config default | sudo tee /etc/containerd/config.toml**
-  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)    
+  - Edit the created config.toml file, and change the fields that are specified [here](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)  
+  (add **SystemdCgroup = true** if this line is not there)
   - Start and enable containerd:  
 sudo systemctl enable containerd  
 sudo systemctl start containerd
@@ -120,17 +121,18 @@ EOF
   - **sudo setenforce 0**
   - **sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config**  
   This will actually turn off SELinux, which is required.
-- Now for the REAL installations:  
+- Now for the REAL installations (retry if it fails due to networking problems):  
   **sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes**
 - **sudo systemctl enable --now kubelet**
 
 ## Initializing the Cluster
 
-Initialization of the cluster is done just on the control node.
+Initialization of the cluster is done just on the control node.  
 Worker nodes are then joined to the cluster.
 When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
-- Init your cluster by typing the following command:  
-sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.3
+
+- Init your cluster by typing the following command:
+sudo kubeadm init --pod-network-cidr 172.16.0.0/16
 - Run the following commands in you control node - as a regular user (no sudo):
   - mkdir -p $HOME/.kube
   - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -142,6 +144,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 - Run this command on the control node to get the join command for the worker nodes.  
 **(Do not use the join command you see at the end of the init command at the control node!!!)**  
-kubeadm token create --print-join-command  
-- Run the output command on each worker node.
-- Use **kubectl get nodes** to see the joined nodes.
+**kubeadm token create --print-join-command  **
+- Run the output command on each worker node(add sudo).
+- Use **kubectl get nodes** to see the joined nodes.  
+It may take a few minutes until the status of the nodes becomes **Ready**.

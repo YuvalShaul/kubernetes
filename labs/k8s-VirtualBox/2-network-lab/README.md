@@ -11,7 +11,7 @@ It is now the time to create a network for them.
 ## Configure NAT Networking
 
 - "**Nat Service**" is explained [here](https://www.virtualbox.org/manual/ch06.html#network_nat_service)
-- If you have completed the first lab, you should be able to use the VirtualBox command-line interface.
+- If you have completed the [first lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab), you should be able to use the VirtualBox command-line interface.
 - Add a new NAT network (I name it **k8s-nat**):  
    **VBoxManage natnetwork add --netname k8s-nat --network "192.168.122.0/24" --enable --dhcp off**
 - Now, for each of you machines, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".

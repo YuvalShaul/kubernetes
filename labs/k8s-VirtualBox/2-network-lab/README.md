@@ -1,12 +1,12 @@
 # 2 - Network Lab
 
 (back to [1-Infrastructure Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab))  
-This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 master, 1 host.
+This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 control node, 1 host.
 It is now the time to create a network for them.
 
 - [Configure NAT Networking](#Configure-NAT-Networking)
 - [IP addresses](#IP-addresses)
-- [Connect host to master and nodes](#Connect-host-to-master-and-nodes)
+- [Connect host to control and workers](#Connect-host-to-control-and-workers)
 
 ## Configure NAT Networking
 
@@ -20,16 +20,16 @@ It is now the time to create a network for them.
 
 ## IP addresses
 
-- Run all nodes, then configure static IP addresses for master and workers.
+- Run all nodes, then configure static IP addresses for control and workers.
 - (use **right-ctrl** to from the mouse capture of the virtual machine window)
   - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
   - BOOTPROTO=static
-  - IPADDR=192.168.122.x (where x is 11,12,13 for k8s-A, k8s-B, k8s-C, 10 for k8s-Master, 100 for the host)
+  - IPADDR=192.168.122.x (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
   - NETMASK=255.255.255.0
   - GATEWAY=192.168.122.1
   - restart your machines
 
-## Connect host to master and nodes
+## Connect host to control and workers
 
 - SSH should work out-of-the-box
 - You can connect like this:

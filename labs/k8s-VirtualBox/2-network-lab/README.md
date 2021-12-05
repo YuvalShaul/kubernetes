@@ -22,7 +22,7 @@ It is now the time to create a network for them.
 
 - Run all nodes, then configure static IP addresses for control and workers.
 - (use **right-ctrl** to from the mouse capture of the virtual machine window)
-  - sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+  - sudo vi /etc/sysconfig/network-scripts/  (--> press tab again to see your interface configuration file)
   - BOOTPROTO=static
   - IPADDR=192.168.122.x (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
   - NETMASK=255.255.255.0

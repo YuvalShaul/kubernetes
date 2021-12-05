@@ -65,8 +65,10 @@ EOF**
 
 - To set those immediatelly:  
 **sudo sysctl --system**  
-- Install iproute-tc package:  
-**sudo dnf install -y iproute-tc**  
+
+- The iproute2 is a suite of command line utilities which manipulate kernel structures for IP networking configuration on a machine. One of the tools in the iproute2 package, the binary tc is the only one used for traffic control, and is needed as part of the networking requirements.  
+Let's install iproute-tc package:  
+**sudo dnf install -y iproute-tc**
 - Stop and disable the firewalld service (not recommended for production):  
 **systemctl stop firewalld.service**  
 **systemctl disable firewalld.service**  

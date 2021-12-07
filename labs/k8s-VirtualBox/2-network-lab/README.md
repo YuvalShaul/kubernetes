@@ -15,8 +15,8 @@ It is now the time to create a network for them.
 - Add a new NAT network (I name it **k8s-nat**):  
    **VBoxManage natnetwork add --netname k8s-nat --network "192.168.122.0/24" --enable --dhcp off**
 - Later on, if your nat network stops working, you can start it again by typing:  
-**VBoxManage natnetwork stop  --netname <nat network name>**  
-**VBoxManage natnetwork start --netname <nat network name>**
+**VBoxManage natnetwork stop  --netname k8s-nat**  
+**VBoxManage natnetwork start --netname k8s-nat**
 - Now, for each of you machines, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".
 - Open the "Advanced" option there, and make sure that the "Cable Connected" is checked.
 

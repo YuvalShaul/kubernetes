@@ -37,3 +37,4 @@ The --ignore-daemonsets to succeed without deleting daemonsets pods.
 - Clean everything:  
 **kubectl delete -f pod.yml**  
 **kubectl delete -f deployment.yml**
+- View nodes, and uncordon a node if you need to.

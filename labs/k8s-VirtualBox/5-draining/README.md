@@ -21,14 +21,15 @@ Thats the pod we want to drain.
 
 ## Safely drain a node
 
-- We'll drain the node with 2 pods on it.  
-**kubectl drain <node name>**  
-We should get some error messages here.  
+- We'll drain the node with 2 pods on it:  
+**kubectl drain \<node name\>**
+- We should get some error messages here:  
   - 1 The single pod cannot be deleted.
-  - 2 The drain command cannot delete those DaemonSet-managed Pods (in this case these are kube-system pods).
+  - 2 The drain command cannot delete those daemonSet-managed Pods (in this case these are kube-system pods).
 - Let's use these two flags to overcome the error messages:  
 **kubectl drain <node name> --ignore-daemonsets --force**  
 The --force will DELETE the first pod.  
+The --ignore-daemonsets to succeed without deleting daemonsets pods.  
 - Let's look at the outcome:  
 **kubectl get pods -o wide**  
 - Clean everything:  

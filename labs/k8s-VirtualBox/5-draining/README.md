@@ -24,8 +24,10 @@ Thats the pod we want to drain.
 - We'll drain the node with 2 pods on it:  
 **kubectl drain \<node name\>**
 - We should get some error messages here:  
-  - 1 The single pod cannot be deleted.
-  - 2 The drain command cannot delete those daemonSet-managed Pods (in this case these are kube-system pods).
+  - 1 The single pod cannot be deleted.  
+      (error: unable to drain node \<pod name\>, aborting command...)  
+  - 2 The drain command cannot delete those daemonSet-managed Pods  
+  (error: cannot delete DaemonSet-managed Pods (use --ignore-daemonsets to ignore): kube-system/calico-node-kkbvv, ...)  
 - Let's use these two flags to overcome the error messages:  
 **kubectl drain <node name> --ignore-daemonsets --force**  
 The --force will DELETE the first pod.  

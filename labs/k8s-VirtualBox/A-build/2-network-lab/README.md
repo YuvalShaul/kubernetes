@@ -46,3 +46,5 @@ To install terminator:
   - **sudo apt-get install terminator**
 
 (go to [3 - Building a K8S Cluster](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/3-building-a-cluster))  
+
+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

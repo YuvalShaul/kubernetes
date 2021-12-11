@@ -48,8 +48,8 @@ We'll upgrade kubeadm:
 - Now we can upgrade **kubectl** and **kubelet**:  
 **sudo yum install -y kubelet-1.22.2-00 kubectl-1.22.2-00**
 - To make sure that if the kubelet service file has changed, the service is restarted, use the following commands:  
-**sudo systemctl daemon-reload** 
-**sudo systemctl restart kubelet**
+  - **sudo systemctl daemon-reload** 
+  - **sudo systemctl restart kubelet**
 - GO BACK TO THE CONTROL-PLANE NODE:
 Uncordon the worker node:  
 **kubectl uncordon k8s-control**  

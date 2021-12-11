@@ -126,7 +126,11 @@ EOF
   - **sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config**  
   This will actually turn off SELinux, which is required.
 - Now for the REAL installations (retry if it fails due to networking problems):  
-  **sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes**
+**sudo yum install -y kubelet-1.22.0-00 kubeadm-1.22.0-00 kubectl-1.22.0-00  --disableexcludes=kubernetes**
+Notes:  
+  - You may need to repeat this command several times, as mirror servers are sometimes not available.
+  - ..So retry until you see **Complete!** in all nodes.
+  - We are installing a specific version of kubernetes here (we will update it later), so the last option prevents yum from automatically updating it.
 - **sudo systemctl enable --now kubelet**
 
 ## Initializing the Cluster

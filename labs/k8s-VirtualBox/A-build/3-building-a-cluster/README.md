@@ -1,7 +1,9 @@
 # 3 - Building a K8S Cluster
 
 This lab will guide you through the process of K8S cluster creation.  
-By now, you should have already done [labs-1](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab), [lab-2](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/2-network-lab)  
+By now, you should have already done 
+[labs-1](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/1-infastructure-lab), 
+[lab-2](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/2-network-lab)   
 Note:  
 If, during your efforts commands stop working (not found) when you use **sudo**, do the following:
 

@@ -33,5 +33,25 @@ Uncordon it:
 
 ## Worker node upgrade steps
 
-- These steps should be done with each node seperatelly.
-- 
+Repeat these steps for each worker node:
+- GO TO THE CONTROL-PLANE NODE!!!
+- Drain the node:
+**kubectl drain k8s-a --ignore-daemonsets --force**  
+(just in case we have a stand alone pod there).
+- NOW GO TO THE WORKER NODE!!!
+- In the worker node itself !!!  
+We'll upgrade kubeadm:  
+**sudo yum install -y  kubeadm-1.22.2-00**
+- Now use **kubeadm** to upgrade the node:  
+**sudo kubeadm upgrade node**
+(this is mostly changes to configuration files)  
+- Now we can upgrade **kubectl** and **kubelet**:  
+**sudo yum install -y kubelet-1.22.2-00 kubectl-1.22.2-00**
+- To make sure that if the kubelet service file has changed, the service is restarted, use the following commands:  
+**sudo systemctl daemon-reload** 
+**sudo systemctl restart kubelet**
+- GO BACK TO THE CONTROL-PLANE NODE:
+Uncordon the worker node:  
+**kubectl uncordon k8s-control**  
+- Verify your control node has been upgraded to the new version:  
+**kubectl get nodes**  

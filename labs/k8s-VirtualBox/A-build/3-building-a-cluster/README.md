@@ -131,7 +131,8 @@ Notes:
   - You may need to repeat this command several times, as mirror servers are sometimes not available.
   - ..So retry until you see **Complete!** in all nodes.
   - We are installing a specific version of kubernetes here (we will update it later), so the last option prevents yum from automatically updating it.
-- **sudo systemctl enable --now kubelet**
+- **kubectl** and **kubeadm** are just commands, but kubelet is a service that has to run, so we enable it here:  
+**sudo systemctl enable --now kubelet**
 
 ## Initializing the Cluster
 

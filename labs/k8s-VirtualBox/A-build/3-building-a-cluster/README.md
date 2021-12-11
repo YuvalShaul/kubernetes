@@ -131,7 +131,7 @@ Notes:
   - You may need to repeat this command several times, as mirror servers are sometimes not available.
   - ..So retry until you see **Complete!** in all nodes.
   - We are installing a specific version of kubernetes here (we will update it later), so the last option prevents yum from automatically updating it.
-- **kubectl** and **kubeadm** are just commands, but kubelet is a service that has to run, so we enable it here:  
+- **kubectl** and **kubeadm** are just commands, but kubelet is a service that has to run, so we enable (and start) it here:  
 **sudo systemctl enable --now kubelet**
 
 ## Initializing the Cluster
@@ -140,8 +140,8 @@ Initialization of the cluster is done just on the control node.
 Worker nodes are then joined to the cluster.
 When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
 
-- Init your cluster by typing the following command:
-sudo kubeadm init --pod-network-cidr 172.16.0.0/16
+- Init your cluster by typing the following command:  
+**sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.0**
 - Run the following commands in you control node - as a regular user (no sudo):
   - mkdir -p $HOME/.kube
   - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

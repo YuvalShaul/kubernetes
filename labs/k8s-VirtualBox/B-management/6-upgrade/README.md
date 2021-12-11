@@ -22,8 +22,8 @@ You will be prompted to see if you want to proceed.
 - If you got these happy success messages (SUCCESS! Your cluster was upgraded to "v1.22.2". Enjoy!), it means we can go on to upgrade the other packages:   
 **sudo yum install -y kubelet-1.22.2-00 kubectl-1.22.2-00**
 - To make sure that if the kubelet service file has changed, the service is restarted, use the following commands:  
-**sudo systemctl daemon-reload** 
-**sudo systemctl restart kubelet**
+  - **sudo systemctl daemon-reload** 
+  - **sudo systemctl restart kubelet**
 - Last step:
 Remember that you've drained your control node (you can use **kubectl get nodes** to see that).  
 Uncordon it:  

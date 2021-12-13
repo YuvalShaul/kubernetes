@@ -43,7 +43,7 @@ Repeat these steps for each worker node:
 We'll upgrade kubeadm:  
 **sudo yum install -y  kubeadm-1.22.2-00**
 - Now use **kubeadm** to upgrade the node:  
-**sudo kubeadm upgrade node**
+**sudo kubeadm upgrade node**  
 (this is mostly changes to configuration files)  
 - Now we can upgrade **kubectl** and **kubelet**:  
 **sudo yum install -y kubelet-1.22.2-00 kubectl-1.22.2-00**
@@ -52,6 +52,6 @@ We'll upgrade kubeadm:
   - **sudo systemctl restart kubelet**
 - GO BACK TO THE CONTROL-PLANE NODE:
 Uncordon the worker node:  
-**kubectl uncordon k8s-control**  
+**kubectl uncordon k8s-a**  
 - Verify your control node has been upgraded to the new version:  
 **kubectl get nodes**  

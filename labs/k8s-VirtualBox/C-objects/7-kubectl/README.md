@@ -5,6 +5,8 @@ Use this lab to get some hands-on experience with kubectl commands.
 - [Preparations](#Preparations)
 - [Experiment with kubectl](#Experiment-with-kubectl)
 - [JSONPATH](#JSONPATH)
+- [sort-by](#sort-by)
+- [selector](#selector)
 
 ## Preparations
 
@@ -21,12 +23,9 @@ create the following deployments:
 - Get a single pod:  
 **kubectl get pods busybox-deployment-......**  (pick one of your pods from the last command)  
 - Explore the json format you get from this pod:  
-**kubectl get pods busybox-deployment-.... -o json**
-- Use a jsonpath to view specific data from the json output:  
-**kubectl get pods busybox-deployment-2-857d87cbc4-p8p7f -o jsonpath='{.spec.nodeName}'**  
-(you should get the node name the pod is running at)
-- 
-
+**kubectl get pods busybox-deployment-.... -o json**  
+It is not very readable...  
+In the next section we'll see how to get some usefull info from it.
 
 ## JSONPATH
 
@@ -38,21 +37,36 @@ You can use [this](https://docs.oracle.com/cd/E60058_01/PDF/8.0.8.x/8.0.8.0.0/PM
 - Try:  
 **kubectl get pods -o jsonpath='{$}'**  
 Notice that the result is for multiple items, and you get a single json object with an "items" property.
-- Try:  
-**kubectl get pods -o jsonpath='{$.items}'*  
+- Try:
+**kubectl get pods -o jsonpath='{$.items}'**
 (now the result is an array)
 - Try:  
 **kubectl get pods -o jsonpath='{$.items[1]}'**  
 (and this is a sinle pod)
 - Try:  
-**
+**kubectl get pods -o jsonpath='{$.items[-1]}'**  
+We get the last item..this is python syntax
+- Use a jsonpath to view specific data from the json output:  
+**kubectl get pods -o jsonpath='{$.items[0].spec.nodeName}'**  
+(you should get the node name the pod is running at)
+- Now, let's get nodeName for all pods:  
+**kubectl get pods -o jsonpath='{$.items[*].spec.nodeName}'**  
+
+## sort-by
+
+A similar syntax can be used to sort our input:  
+**kubectl get pods -o wide  --sort-by spec.nodeName**  
+Compare with the output when not sorted:  
+**kubectl get pods -o wide**
 
 
-**kubectl get pods -o wide --sort-by .spec.nodeName**
+## selector
 
+- Filter your output by useng --selector option.  
+This one works just on labels:  
+**kubectl get pods --selector=app=busybox-1**
 
-
-
-List the pods with the label given to the second deployment:  
-**kubectl get pods --selector=app=busybox-2**
+Find more options in the documentation:
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
+- https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 

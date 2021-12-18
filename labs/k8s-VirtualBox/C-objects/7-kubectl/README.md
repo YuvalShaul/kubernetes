@@ -1,13 +1,10 @@
 # 7 - kubectl Lab
 
-This lab will guide you through the process of creating a baseline environment that we'll use for out kubernetes installation.  
-I have tried this on Windows-11 Pro (version 21H2).
-
-- [VirtualBox](#Virtual-Box)
-
-## Exploring Kubernetes with kubectl
-
 Use this lab to get some hands-on experience with kubectl commands.
+
+- [Preparations](#Preparations)
+- [Experiment with kubectl](#Experiment-with-kubectl)
+- [JSONPATH](#JSONPATH)
 
 ## Preparations
 
@@ -15,7 +12,7 @@ create the following deployments:
 - **kubectl apply -f many-pods1.yaml**
 - **kubectl apply -f many-pods2.yaml**
 
-## Experiment with kubectl:
+## Experiment with kubectl
 
 - Get a list of pods:  
 **kubectl get pods**
@@ -42,8 +39,13 @@ You can use [this](https://docs.oracle.com/cd/E60058_01/PDF/8.0.8.x/8.0.8.0.0/PM
 **kubectl get pods -o jsonpath='{$}'**  
 Notice that the result is for multiple items, and you get a single json object with an "items" property.
 - Try:  
-**kubectl get pods -o jsonpath='{$.items}'*
-
+**kubectl get pods -o jsonpath='{$.items}'*  
+(now the result is an array)
+- Try:  
+**kubectl get pods -o jsonpath='{$.items[1]}'**  
+(and this is a sinle pod)
+- Try:  
+**
 
 
 **kubectl get pods -o wide --sort-by .spec.nodeName**

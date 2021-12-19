@@ -29,7 +29,7 @@ Thats the pod we want to drain.
   - 2 The drain command cannot delete those daemonSet-managed Pods  
   (error: cannot delete DaemonSet-managed Pods (use --ignore-daemonsets to ignore): kube-system/calico-node-kkbvv, ...)  
 - Let's use these two flags to overcome the error messages:  
-**kubectl drain <node name> --ignore-daemonsets --force**  
+**kubectl drain \<node name\> --ignore-daemonsets --force**  
 The --force will DELETE the first pod.  
 The --ignore-daemonsets to succeed without deleting daemonsets pods.  
 - Let's look at the outcome:  
@@ -37,4 +37,6 @@ The --ignore-daemonsets to succeed without deleting daemonsets pods.
 - Clean everything:  
 **kubectl delete -f pod.yml**  
 **kubectl delete -f deployment.yml**
-- View nodes, and uncordon a node if you need to.
+- View nodes, and uncordon the node you have drained:
+  - **kubectl get nodes**
+  - **kubectl uncordon \<node name\>

@@ -8,10 +8,10 @@ You may want to do that as part of a maintenance.  S
 
 ## Creating a pod and a deployment
 
-- Use the pod.yml and deployment.yml file from this lab.
-apply both of them to your cluster:  
-**kubectl apply -f pod.yml**  
+- Use the deployment.yml and pod.yml files from this lab.
+apply both of them to your cluster (in this order!):  
 **kubectl apply -f deployment.yml**
+**kubectl apply -f pod.yml**  
 - Make sure that the pod and deployment have beed applied correctly:
 **kubectl get pods -o wide**  
 We use the output wide option (-o wide), so that you can see on which node each pod runs.

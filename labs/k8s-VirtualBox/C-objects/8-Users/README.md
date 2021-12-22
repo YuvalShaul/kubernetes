@@ -23,7 +23,7 @@ Make sure you copy just the base64 part, nothing else.
 so the **CN (Common Name)** is used by kubernetes as the user name.
 
 
-## Create a new user
+## Create a new user certificates
 
 - First, we need to get the root certificate and key for our Kubernetes clusters. Since the private key ca.key) should not be modes, we can do the whole thing in the control node, in the pki directory.
 - Here are my commands (at the control node):
@@ -50,7 +50,59 @@ so the **CN (Common Name)** is used by kubernetes as the user name.
     - **rm ca.srl**
   - Im changing the file permissions for these files (so I can copy them):  
   **chmod 777 dave.\***
-  - Go into my host computer, and copy the files:  
+  - Go into my host computer, and copy the files:
+    - **cd ~/.kube**  
     - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.crt .**
     - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.key .**
+    - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/ca.crt .**
+  - Change file permissions:  
+    - **chmod 000 dave.key**
+    - **chmod 644 dave.crt**
   - remove the files from the control node.
+  - Convert the files to base64, and save in environment variables:  
+    - **CLIENT_CRT_BASE64=$(base64 dave.crt)**
+    - **CLIENT_KEY_BASE64=$(base64 dave.key)**
+
+
+
+## Create a config file for dave
+
+- Use the following config template:
+
+        apiVersion: v1  
+        current-context: dave@kubernetes  
+        preferences: {}  
+        clusters:  
+        - cluster:  
+            certificate-authority-data: CA_CRT  
+            server:  https://192.168.122.10:6443
+          name: kubernetes  
+        contexts:  
+        - context:  
+            cluster: kubernetes  
+            user: dave  
+          name: dave@kubernetes  
+        kind: Config
+        users:  
+        - name: dave
+          user:  
+            client-certificate-data: CLIENT_CRT  
+            client-key-data: CLIENT_KEY  
+
+- Fill this file with the 3 base64 textx you have created before.  
+(make sure you get no new lines added)
+
+## Use the new config file
+
+Here's what you should expect:  
+
+    > kubectl get pods
+    NAME                            READY   STATUS    RESTARTS      AGE
+    my-deployment-56474dbc6-gxpbd   1/1     Running   2 (34h ago)   3d5h
+    my-deployment-56474dbc6-jln9h   1/1     Running   2 (34h ago)   3d5h
+    my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d5h
+    > 
+    > kubectl get pods --kubeconfig .kube/dave-config 
+    Error from server (Forbidden): pods is forbidden: User "dave " cannot list resource "pods" in API group "" in the namespace "default"
+    > 
+

@@ -40,3 +40,4 @@ Now it works:
     my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d6h
     > 
 
+- Try to see if you can delete some logs.

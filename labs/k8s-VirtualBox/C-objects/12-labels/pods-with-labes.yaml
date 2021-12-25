@@ -22,6 +22,7 @@ metadata:
   labels:
     app.k8s.io/name: appB
     app.k8s.io/release: "1"
+    nice: not_so-much
 spec:
   containers:
   - name: busybox
@@ -107,6 +108,7 @@ metadata:
   labels:
     app.k8s.io/name: appA
     app.k8s.io/release: "3"
+    nice: very
 spec:
   containers:
   - name: busybox

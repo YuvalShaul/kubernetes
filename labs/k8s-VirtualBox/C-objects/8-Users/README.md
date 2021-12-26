@@ -107,8 +107,7 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
 ## Use the new config file
 
 - Create some pods (using the admin user)
-- Try to list these pods.  
-Here's what you should expect:  
+- Here's what happens if you try to list the pods (once using the admin user, then using dave):  
 
     > kubectl get pods
     NAME                            READY   STATUS    RESTARTS      AGE

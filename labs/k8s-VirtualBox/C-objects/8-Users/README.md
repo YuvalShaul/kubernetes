@@ -78,25 +78,25 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
 
 - Use the following config template to create a new file called **daveconfig**:
 
-        apiVersion: v1  
-        current-context: dave@kubernetes  
-        preferences: {}  
-        clusters:  
-        - cluster:  
-            certificate-authority-data: CA_CRT  
-            server:  https://192.168.122.10:6443
-          name: kubernetes  
-        contexts:  
-        - context:  
-            cluster: kubernetes  
-            user: dave  
-          name: dave@kubernetes  
-        kind: Config
-        users:  
-        - name: dave
-          user:  
-            client-certificate-data: CLIENT_CRT  
-            client-key-data: CLIENT_KEY  
+      apiVersion: v1  
+      current-context: dave@kubernetes  
+      preferences: {}  
+      clusters:  
+      - cluster:  
+          certificate-authority-data: CA_CRT  
+          server:  https://192.168.122.10:6443
+        name: kubernetes  
+      contexts:  
+      - context:  
+          cluster: kubernetes  
+          user: dave  
+        name: dave@kubernetes  
+      kind: Config
+      users:  
+      - name: dave
+        user:  
+          client-certificate-data: CLIENT_CRT  
+          client-key-data: CLIENT_KEY  
 
 - Fill this file with the 3 base64 textx you have created before.  
 **Make sure you get no new lines added !!!**  

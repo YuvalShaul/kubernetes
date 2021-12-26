@@ -6,7 +6,7 @@ Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authenti
 - [Reading the admin user name](#Reading-the-admin-user-name)
 - [Create a new user certificates](#Create-a-new-user-certificates)
 - [Create a config file for dave](#Create-a-config-file-for-dave)
-- [Use the new config file](#Use the-new-config-file)
+- [Use the new config file](#Use-the-new-config-file)
 
 ## Reading the admin user name
 

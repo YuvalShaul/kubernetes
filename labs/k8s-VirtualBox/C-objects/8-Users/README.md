@@ -65,7 +65,7 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
     - **chmod 000 dave.key**
     - **chmod 644 dave.crt**
   - remove the files from the control node:  
-  **ca ..**
+  **cd ..**  
   **rm -rf dave**
   - Convert the files to base64, and save in environment variables:  
     - **CLIENT_CRT_BASE64=$(base64 dave.crt)**
@@ -109,13 +109,13 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
 - Create some pods (using the admin user)
 - Here's what happens if you try to list the pods (once using the admin user, then using dave):  
 
-    > kubectl get pods
-    NAME                            READY   STATUS    RESTARTS      AGE
-    my-deployment-56474dbc6-gxpbd   1/1     Running   2 (34h ago)   3d5h
-    my-deployment-56474dbc6-jln9h   1/1     Running   2 (34h ago)   3d5h
-    my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d5h
-    > 
-    > kubectl get pods --kubeconfig .kube/daveconfig 
-    Error from server (Forbidden): pods is forbidden: User "dave " cannot list resource "pods" in API group "" in the namespace "default"
-    > 
+      > kubectl get pods
+      NAME                            READY   STATUS    RESTARTS      AGE
+      my-deployment-56474dbc6-gxpbd   1/1     Running   2 (34h ago)   3d5h
+      my-deployment-56474dbc6-jln9h   1/1     Running   2 (34h ago)   3d5h
+      my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d5h
+      > 
+      > kubectl get pods --kubeconfig .kube/daveconfig 
+      Error from server (Forbidden): pods is forbidden: User "dave " cannot list resource "pods" in API group "" in the namespace "default"
+      > 
 

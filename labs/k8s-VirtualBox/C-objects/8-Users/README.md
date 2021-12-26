@@ -5,8 +5,8 @@ Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authenti
 
 - [Reading the admin user name](#Reading-the-admin-user-name)
 - [Create a new user certificates](#Create-a-new-user-certificates)
-- [](#)
-- [](#)
+- [Create a config file for dave](#Create-a-config-file-for-dave)
+- [Use the new config file](#Use the-new-config-file)
 
 ## Reading the admin user name
 
@@ -48,7 +48,7 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
   (there should be now a file called dave.key)
   - Now create a csr (Certificate Signing Request), to prepare everything needed to the actual certificate creation.  
   Note that this is where we set the user name (and also the group name):    
-  **openssl req -new -key dave.key -out dave.csr -subj "/CN=dave /O=developers"**
+  **openssl req -new -key dave.key -out dave.csr -subj "/CN=dave/O=developers"**
   - Now, to the actual signing of the certificate:  
   **openssl x509 -req -in dave.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out dave.crt -days 3540**
   - We can remove the files now not needed:  
@@ -70,12 +70,13 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
   - Convert the files to base64, and save in environment variables:  
     - **CLIENT_CRT_BASE64=$(base64 dave.crt)**
     - **CLIENT_KEY_BASE64=$(base64 dave.key)**
+    - **CA_CRT_BASE64=$(base64 ca.crt)**
 
 
 
 ## Create a config file for dave
 
-- Use the following config template:
+- Use the following config template to create a new file called **daveconfig**:
 
         apiVersion: v1  
         current-context: dave@kubernetes  
@@ -98,10 +99,15 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
             client-key-data: CLIENT_KEY  
 
 - Fill this file with the 3 base64 textx you have created before.  
-(make sure you get no new lines added)
+**Make sure you get no new lines added !!!**  
+**Notice that VSCODE adds spaces instead of those new lines. Remove these !!!**
+- Copy **daveconfig** into .kube directory:  
+**cp daveconfig ~/.kube**
 
 ## Use the new config file
 
+- Create some pods (using the admin user)
+- Try to list these pods.  
 Here's what you should expect:  
 
     > kubectl get pods
@@ -110,7 +116,7 @@ Here's what you should expect:
     my-deployment-56474dbc6-jln9h   1/1     Running   2 (34h ago)   3d5h
     my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d5h
     > 
-    > kubectl get pods --kubeconfig .kube/dave-config 
+    > kubectl get pods --kubeconfig .kube/daveconfig 
     Error from server (Forbidden): pods is forbidden: User "dave " cannot list resource "pods" in API group "" in the namespace "default"
     > 
 

@@ -13,8 +13,8 @@ In the last lab, we have reached this scenario, when trying to access pos resour
     > 
 
 
-- [Control plane upgrade steps](#Control-plane-upgrade-steps)
-- [Worker node upgrade steps](#Worker-node-upgrade-steps)
+- [Create and apply the role](#Create-and-apply-the-role)
+- [Create and apply the role binding](#Create-and-apply-the-role-binding)
 
 ## Create and apply the role
 

@@ -3,7 +3,10 @@
 In this lab we are going to experience the use of labels and selectors.
 
 
-- [Installing k8s resource server](#Installing-k8s-resource-server)
+- [Create some pods](#Create-some-pods)
+- [Use equality-based selectors](#Use-equality-based-selectors)
+- [Use set-based selectors](#Use-set-based-selectors)
+- [Some complex examples](#Some-complex-examples)
 
 ## Create some pods
 

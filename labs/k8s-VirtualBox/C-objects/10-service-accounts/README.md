@@ -21,7 +21,7 @@ It describes a service account object with the name **my-sa**.
 (search for the line starting with **Mountable secrets:**)
 - This token is a [JWT (Json Web Token)](https://en.wikipedia.org/wiki/JSON_Web_Token), that includes several fields.  
 We can get the actual data of the secret by using this command:  
-**kubectl describe secret <secret mountable token name>
+**kubectl describe secret \<secret mountable token name\>**
 - Copy the base64 text of the token, and decode the JWT, by pasting it into the token field of [https://jwt.io/](https://jwt.io/).  
 In the payload part of the JWT you can find the service account name.
 

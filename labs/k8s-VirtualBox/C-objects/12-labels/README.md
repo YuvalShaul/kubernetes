@@ -48,5 +48,5 @@ Try the following:
 - Try these (what do they do?):  
 **kubectl get pods --selector="app.k8s.io/name in (appB, appC), app.k8s.io/release in ("1", "2")"**  
 **kubectl get pods --selector="app.k8s.io/name in (appB, appC), app.k8s.io/release==3"**  
-**kubectl get pods --selector='!nice',app.k8s.io/release==3**
+**kubectl get pods --selector='!nice',app.k8s.io/release==3**  
 **kubectl get pods --selector='!nice',"app.k8s.io/name notin (appB)"**

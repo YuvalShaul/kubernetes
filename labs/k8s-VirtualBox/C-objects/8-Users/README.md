@@ -4,6 +4,9 @@ Use this lab to learn about k8s **normal** users.
 Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) to read a little about users in kubernetes.
 
 - [Reading the admin user name](#Reading-the-admin-user-name)
+- [Create a new user certificates](#Create-a-new-user-certificates)
+- [](#)
+- [](#)
 
 ## Reading the admin user name
 
@@ -11,7 +14,9 @@ After creating your cluster (using **kubeadm**) you'll have this file:
 **/etc/kubernetes/admin.conf** just on your control node(s).  
 This file is an exact copy of the **~/.kube/config**  config file you are using with your kubectl commands.
 
-- Edit and copy the **client-certificate-data** part of this file.  
+- Open a terminal to your control node:  
+**ssh osboxes@192.168.122.10**
+- Edit the file (use sudo) and copy the **client-certificate-data** part of this file.  
 Make sure you copy just the base64 part, nothing else.
 - Paste this into a new file called cert64
 - Use the base64 tool to convert it:  
@@ -25,8 +30,9 @@ so the **CN (Common Name)** is used by kubernetes as the user name.
 
 ## Create a new user certificates
 
-- First, we need to get the root certificate and key for our Kubernetes clusters. Since the private key ca.key) should not be modes, we can do the whole thing in the control node, in the pki directory.
-- Here are my commands (at the control node):
+- First, we need to get the root certificate and key for our Kubernetes clusters.  
+Since the private key (ca.key) should not be moved outsite of the control node, we can do the whole thing in the control node, in the pki directory.
+- Use the following commands at the control node:
   - **sudo su**
   - **cd /etc/kubernetes/pki**
   - Looking at this directory I can find:
@@ -53,12 +59,14 @@ so the **CN (Common Name)** is used by kubernetes as the user name.
   - Go into my host computer, and copy the files:
     - **cd ~/.kube**  
     - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.crt .**
-    - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.key .**
+    - **sudo scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.key .**
     - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/ca.crt .**
   - Change file permissions:  
     - **chmod 000 dave.key**
     - **chmod 644 dave.crt**
-  - remove the files from the control node.
+  - remove the files from the control node:  
+  **ca ..**
+  **rm -rf dave**
   - Convert the files to base64, and save in environment variables:  
     - **CLIENT_CRT_BASE64=$(base64 dave.crt)**
     - **CLIENT_KEY_BASE64=$(base64 dave.key)**

@@ -68,9 +68,10 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
   **cd ..**  
   **rm -rf dave**
   - Convert the files to base64, and save in environment variables:  
-    - **CLIENT_CRT_BASE64=$(base64 dave.crt)**
-    - **CLIENT_KEY_BASE64=$(sudo base64 dave.key)**
-    - **CA_CRT_BASE64=$(base64 ca.crt)**
+    - **CLIENT_CRT_BASE64=$(base64 -w 0dave.crt)**
+    - **CLIENT_KEY_BASE64=$(sudo base64 -w 0 dave.key)**
+    - **CA_CRT_BASE64=$(base64 -w 0ca.crt)**  
+    (the **-w 0** options eliminate line-wrapping, and creates a single line - which is what we need)
 
 
 

@@ -13,3 +13,5 @@ data:
     multi line
     data can be used
     based on yaml syntax
+binaryData: 
+  binkey1: aGVsbG8gd29ybGQK

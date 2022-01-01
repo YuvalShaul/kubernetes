@@ -2,7 +2,8 @@
 
 In this lab we are going to demonstrate using probes to monitor containers health.
 
-- [Create a config map](#Create-a-config-map)
+- [Always pod](#Always-pod)
+- [OnFailure pod](#OnFailure-pod)
 
 ## Always pod
 

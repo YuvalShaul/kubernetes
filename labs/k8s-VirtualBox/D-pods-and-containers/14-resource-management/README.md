@@ -2,7 +2,8 @@
 
 In this lab we are going to demonstrate resource requests.
 
-- [Create a config map](#Create-a-config-map)
+- [Too many cpus required](#Too-many-cpus-required)
+- [Too much memory required](#Too-much-memory-required)
 
 ## Too many cpus required
 

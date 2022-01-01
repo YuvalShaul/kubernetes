@@ -30,14 +30,23 @@ type:
 
 ## Use the configmap and secret in a pod using environment variables
 
-- Create a pod by applying the pod.yaml file in this lab:  
-**kubectl apply -f pod.yaml**
-- Notice the lines in the pod.yaml file that refer to the configmap
+- Create a pod by applying the **envvar-pod.yaml** file in this lab:  
+**kubectl apply -f envvar-pod.yaml**
+- Notice the lines in the envvar-pod.yaml file that refer to the configmap and secret
 - Exec into the pod:  
-**kubectl exec -it my-pod -- sh**
+**kubectl exec -it envvar-pod -- sh**
 - Access the environment variable to see the value from the **configmap**:  
 **echo $CONFIGMAP_VAR**
 - Access the environment variable to see the value from the **secret**:  
 **echo $SECRET_VAR**
 
-## Create 
+## Use the configmap and secret in a pod using volumes
+
+- Create a pod by applying the **volume-pod.yaml** file in this lab:  
+**kubectl apply -f volume-pod.yaml**
+- Exec into the pod:  
+**kubectl exec -it volume-pod -- sh**
+- Your data is in the mount points:  
+  - **/etc/config/configmap** is a directory with a file for each key. The file name is the key, and the content of the file is the value.
+  - **/etc/config/secret** uses the same pattern for secrets.
+  - Use **cat** to see the content of these files.

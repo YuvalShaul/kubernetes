@@ -2,7 +2,7 @@
 
 In this lab we are going to use a configmap.
 
-- [Create a config map](#Create-a-config-map)
+- [Create a configmap](#Create-a-configmap)
 - [Create a secret](#Create-a-secret)
 - [Use the configmap and secret in a pod using environment variables](#Use-the-configmap-and-secret-in-a-pod-using-environment-variables)
 - [Use the configmap and secret in a pod using volumes](#Use-the-configmap-and-secret-in-a-pod-using-volumes)

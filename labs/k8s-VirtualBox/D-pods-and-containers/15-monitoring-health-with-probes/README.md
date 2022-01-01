@@ -2,7 +2,7 @@
 
 In this lab we are going to demonstrate using probes to monitor containers health.
 
-- [Create a config map](#Create-a-config-map)
+- [Liveness pod](#Liveness-pod)
 
 ## Liveness pod
 

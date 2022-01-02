@@ -32,8 +32,11 @@ Just wait a few more seconds.
 **kubectl exec -it my-pod -- sh**
 - Create a lod in your pod by running the following command:  
 **for i in 1 2 3 4; do while : ; do : ; done & done**  
-It will create 4 loops. Each loop is running the null ( **:** ) command.  Each loop runs in its own thread and can create a load of 100%.
--  
+It will create 4 loops. Each loop is running the null ( **:** ) command.  
+Each loop runs in its own process (Use **ps** to see that).  
+Each process can create a load of 100% for a single virtual cpu.  
+-  Use **kubectl top pods my-pod** to see what's going on.  
+You may have to wait for several minutes to see how the load builds up.
 
 
 

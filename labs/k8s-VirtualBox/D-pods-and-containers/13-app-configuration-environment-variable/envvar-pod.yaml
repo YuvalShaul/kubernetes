@@ -15,11 +15,11 @@ spec:
       - name: CONFIGMAP_VAR
         valueFrom:
           configMapKeyRef:
-            name: my-config-map
+            name: my-configmap
             key: key2
       - name: SECRET_VAR
         valueFrom:
           secretKeyRef:
-            name: secret-password
+            name: my-secret
             key: pass
   

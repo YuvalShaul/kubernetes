@@ -15,7 +15,7 @@ spec:
   volumes:
   - name: configmap-volume
     configMap:
-      name: my-config-map
+      name: my-configmap
   - name: secret-volume
     secret:
-      secretName: secret-password
+      secretName: my-secret

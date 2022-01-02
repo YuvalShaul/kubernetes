@@ -12,7 +12,7 @@ In this lab we are going to create service accounts.
 - Look at the **sa.yaml** file in this lab.  
 It describes a service account object with the name **my-sa**.
 - Create the service account by applying this file:  
-**kubectl apply -f my-sa.yaml**
+**kubectl apply -f sa.yaml**
 
 ## See token from the service account
 

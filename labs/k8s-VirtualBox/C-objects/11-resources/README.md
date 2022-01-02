@@ -4,7 +4,7 @@ In this lab we are going to create service accounts.
 
 
 - [Installing k8s resource server](#Installing-k8s-resource-server)
-- [Use the top command](#Use the-top-command)
+- [Use the top command](#Use-the-top-command)
 - [Create some load](#Create-some-load)
 
 ## Installing k8s resource server

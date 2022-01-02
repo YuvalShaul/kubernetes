@@ -17,6 +17,7 @@ In this lab we are going to create service accounts.
 
 ## Use the top command
 
+- Make sure you delete pods that were created in previous labs.
 - Create a pod by applying the pod.yaml file in this lab:  
 **kubectl apply -f pod.yaml**  
 There is nothing special about this specific pod.

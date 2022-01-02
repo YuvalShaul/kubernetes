@@ -11,7 +11,7 @@ In this lab we are going to create service accounts.
 
 - Install the resource server by applying this file:  
 **kubectl apply -f metrics-server-components.yaml**
-- You can read more about the metrics server from the [github repository](kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml)
+- You can read more about the metrics server from the [github repository](https://github.com/kubernetes-sigs/metrics-server)
 - Test the installation by using the metric server api:  
 **kubectl get --raw /apis/metrics.k8s.io/**
 

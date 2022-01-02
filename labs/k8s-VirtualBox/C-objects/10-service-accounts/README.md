@@ -29,7 +29,7 @@ In the payload part of the JWT you can find the service account name.
 
 - Let's create a pod that is using the same sa (look at the **pod.yaml** in this lab):  
 **kubectl apply -f pod.yaml**
-- Simmilar information is mounted so the pods containers can also use a signed JWT with the same service account.  
+- Similar information is mounted so the pods containers can also use a signed JWT with the same service account.  
 Lets connect to the pods single container first:  
 **kubectl exec my-pod -it -- sh**
 - View the content of the mounted token that the container sees:  

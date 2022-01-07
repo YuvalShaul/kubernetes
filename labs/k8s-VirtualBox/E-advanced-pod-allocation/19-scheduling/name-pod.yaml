@@ -3,12 +3,10 @@ kind: Pod
 metadata:
   name: my-pod
 spec:
-  nodeSelector:
-    special: yep  
+  nodeName: k8s-c
   containers:
   - name: busybox
     image: busybox:latest
     command:
       - sleep
       - "3600"
-  

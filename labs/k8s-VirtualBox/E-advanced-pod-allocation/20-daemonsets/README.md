@@ -3,7 +3,6 @@
 Use this lab we'll demonstrate the use of daemonsets.
 
 - [Create a daemonset](#Create-a-daemonset)
-- [](#)
 
 ## Create a daemonset
 

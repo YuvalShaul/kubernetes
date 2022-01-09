@@ -1,4 +1,4 @@
-# 7 - kubectl Lab
+# 19 - kubectl Lab
 
 Use this lab we'll demonstrate **nodeSelector** and **nodeName** configurations.
 

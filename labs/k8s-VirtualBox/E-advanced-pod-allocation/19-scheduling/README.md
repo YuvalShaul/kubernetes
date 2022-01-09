@@ -31,6 +31,6 @@ It uses nodeSelector to select a specific node.
 It uses nodeName to directly select a specific node.  
 **Change the node name to the corect name within your cluster**.
 - Create your pod by applying the file:  
-**kubectl apply -f select-pod.yaml**
+**kubectl apply -f name-pod.yaml**
 - Make sure your pod is running in the correct node:  
 **kubectl get pods -o wide**

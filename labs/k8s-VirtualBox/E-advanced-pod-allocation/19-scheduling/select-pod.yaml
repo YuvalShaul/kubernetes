@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: select-pod
 spec:
   nodeSelector:
     special: yep  

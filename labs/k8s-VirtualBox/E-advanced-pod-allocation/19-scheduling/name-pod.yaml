@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: name-pod
 spec:
   nodeName: k8s-c
   containers:

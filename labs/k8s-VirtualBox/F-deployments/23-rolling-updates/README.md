@@ -3,12 +3,10 @@
 Use this lab we'll demonstrate using rolling updates with k8s Deployments.
 
 - [Create a dployment](#Create-a-dployment)
-- [](#)
-- [](#)
-- [](#)
-- [](#)
-- [](#)
-s
+- [Rollout a good change](#Rollout-a-good-change)
+- [Rollout a bad change](#Rollout-a-bad-change)
+- [Rollback](#Rollback)
+
 ## Create a dployment
 
 - Use the **my-deployment.yaml** file from this lab to create a new deployment:  

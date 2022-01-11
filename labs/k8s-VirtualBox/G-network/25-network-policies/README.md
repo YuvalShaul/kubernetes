@@ -2,7 +2,7 @@
 
 We'll use this lab to demonstrate network policies
 
-- [Create a new namespaec](#Create-a-new-namespaec)
+- [Create a new namespaece](#Create-a-new-namespaece)
 - [Create pods](#Create-pods)
 - [Connectivity before a network policy](#Connectivity-before-a-network-policy)
 - [Setting up a blocking network policy](#Setting-up-a-blocking-network-policy)

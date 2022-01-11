@@ -2,7 +2,7 @@
 
 We'll use this lab to demonstrate DNS service within kubernetes.
 
-- [View DNS Pods and service](#Viee-DNS-Pods-and-service)
+- [View DNS Pods and service](#View-DNS-Pods-and-service)
 - [Create client and server pods](#Create-client-and-server-pods)
 - [DNS for pods](#DNS-for-pods)
 

@@ -26,6 +26,8 @@ This service uses the pods that were created by the **svc-deployment.yaml**.
 **kubectl apply -f cluster-ip.yaml**
 - Verify that the service was created and get the service IP address:  
 **kubectl get services**
+- You can also see the endpoints (i.e. pods) this service is sending traffic to:  
+**kubectl get endpoints clusterip-service**
 
 ## Use the ClusterIP service
 

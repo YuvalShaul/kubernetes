@@ -2,7 +2,11 @@
 
 We'll use this lab to demonstrate services.
 
-- [](#)
+- [Create a deployment](#Create-a-deployment)
+- [Create a service](#Create-a-service)
+- [Use the ClusterIP service](#Use-the-ClusterIP-service)
+- [A NodePort service](#A-NodePort-service)
+
 
 ## Create a deployment
 
@@ -38,8 +42,15 @@ This service uses the pods that were created by the **svc-deployment.yaml**.
 - Use curl repeatedly to get the main page of the service.  
 Since you have changed your pods to respond with different replies, you should be able to see how the service load balancing works.  
 **curl \<service-IP-address\>**
+- Now try the same, this time using the service name:  
+**curl clusterip-service**
 
+## A NodePort service
 
-
-
-
+- Use the same pods with the **node-port.yaml** service definition.  
+This will create a NodePort type service that will be accessible from outside the cluster:  
+**kubectl apply -f node-port.yaml**
+- Test this service from your host machine, using one of the IP addresses of your nodes (including the control node):  
+**curl 192.168.122.11:30080**
+- You can now use a browser to see the same.  
+(notice: some browsers will not re-send an HTTP GET request each time you refresh your page.)

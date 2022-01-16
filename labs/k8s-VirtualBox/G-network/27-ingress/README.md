@@ -5,9 +5,7 @@ We'll use this lab to demonstrate k8s ingress.
 - [Ingress Controller](#Ingress-Controller)
 - [Deployments and Services](#Deployments-and-Services)
 - [creating the Ingress](#creating-the-Ingress)
-- [](#)
-- [](#)
-- [](#)
+- [Accessing the Ingress](#Accessing-the-Ingress)
 
 
 ## Ingress Controller
@@ -58,4 +56,17 @@ We should be able to see "AAAAA" or "BBBBB" accordingly.
 The NGINX server gets an HTTP-GET request for the path "/".  
 There is an explained example for this [here](https://kubernetes.github.io/ingress-nginx/examples/rewrite/#rewrite-target)
 
-## 
+## Accessing the Ingress
+
+- This is a little tricky:  
+Let's start by looking at the Ingress:  
+**kubectl get ingress**  
+- You should be able to see an IP address that blongs to one of your nodes.  
+This is correct, but the port number displayed is not the port nymber you should be using.
+- Look at the Ingress services:  
+**kubectl get services -n ingress-nginx**  
+You should see a port number at the range:  30000-32767
+- Query from your host machine using this port, and using the IP address displayed for the nginx.  
+Example:  
+**curl 192.168.122.13:32409/A**
+

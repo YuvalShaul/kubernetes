@@ -2,8 +2,8 @@
 
 We'll use this lab to demonstrate k8s ingress.
 
-- [](#)
-- [](#)
+- [Ingress Controller](#Ingress-Controller)
+- [Deployments and Services](#Deployments-and-Services)
 - [](#)
 - [](#)
 - [](#)
@@ -29,5 +29,24 @@ Please verify:
   etc.
 - Verify that an ingress class was already created for us during the installation:  
 **kubectl get ingressclasses**
+
+
+## Deployments and Services
+
+- Create the 2 deployments:  
+**kubectl apply -f dap1.yaml**  
+**kubectl apply -f dap2.yaml**  
+- Notice that we have just a single pod in each deployment.
+- View the pods, and exec into the pod from deployment 1:  
+**kubectl get pods**  
+**kubectl exec -it <pod name> -- sh**
+- Rewrite the main html file with this text:  
+**echo "AAAAA" > /usr/share/nginx/html/index.html**
+- Repeat this process with the pod from deployment 2, but use "BBBBB" instead.
+- Create the 2 services.  
+Note that these are ClusterIP services, and we'll use the ingress to connect to them frou the outside:  
+**kubectl apply -f service1.yaml**  
+**kubectl apply -f service2.yaml**  
+
 
 

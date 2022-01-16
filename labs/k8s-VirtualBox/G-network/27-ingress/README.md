@@ -4,7 +4,7 @@ We'll use this lab to demonstrate k8s ingress.
 
 - [Ingress Controller](#Ingress-Controller)
 - [Deployments and Services](#Deployments-and-Services)
-- [](#)
+- [creating the Ingress](#creating-the-Ingress)
 - [](#)
 - [](#)
 - [](#)
@@ -48,5 +48,14 @@ Note that these are ClusterIP services, and we'll use the ingress to connect to 
 **kubectl apply -f service1.yaml**  
 **kubectl apply -f service2.yaml**  
 
+## creating the Ingress
 
+- Create the ingress defined in this lab:  
+**kubectl apply -f ingress.yaml**
+- We are sending all traffic sent to /A to service-1, and all /B traffic to service-2.  
+We should be able to see "AAAAA" or "BBBBB" accordingly.
+- Note that we are using annotations so that the /A or /B path we are using are actually removed.  
+The NGINX server gets an HTTP-GET request for the path "/".  
+There is an explained example for this [here](https://kubernetes.github.io/ingress-nginx/examples/rewrite/#rewrite-target)
 
+## 

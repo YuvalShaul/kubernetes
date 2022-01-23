@@ -32,8 +32,8 @@ Please verify:
 ## Deployments and Services
 
 - Create the 2 deployments:  
-**kubectl apply -f dap1.yaml**  
-**kubectl apply -f dap2.yaml**  
+**kubectl apply -f dep1.yaml**  
+**kubectl apply -f dep2.yaml**  
 - Notice that we have just a single pod in each deployment.
 - View the pods, and exec into the pod from deployment 1:  
 **kubectl get pods**  

@@ -21,7 +21,7 @@ In this lab we'll demonstrate the creation of PersistentVolume(s), and then cons
 ## Create persistent volumes claim
 
 - We are making just a single claim:  
-**kubec apply -f claim.yaml**
+**kubectl apply -f claim.yaml**
 - Notice that we explicitly request a specific pv:  
 **volumeName: local-pv-b**
 - Verify that the claim was created, and is bound to the **requested** pv:  

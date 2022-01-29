@@ -1,6 +1,9 @@
 # 29 - Using simple volumes
 
-In this lab we'll use basic volumes in our pods.
+In this lab we'll use basic volumes in our pods:
+- No PersistentVolume
+- No PersistentVolumeClain
+- No StorageClass
 
 - [Create a multi container pod](#Create-a-multi-container-pod)
 - [Things to do in container-a](#Things-to-do-in-container-a)

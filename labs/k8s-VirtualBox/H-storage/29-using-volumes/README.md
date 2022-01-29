@@ -63,6 +63,3 @@ Each container mounts this volume on a different container path.
   - the /data directory is still there
   - the data.txt file and its content were not deleted.
 
-
-
-- Now, delete the pod, and 

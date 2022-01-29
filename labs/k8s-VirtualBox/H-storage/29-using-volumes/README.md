@@ -51,7 +51,7 @@ Each container mounts this volume on a different container path.
 - Connect to the correct node, find the /data directory and view the ontent of the file:  
 **ssh osboxes@192.168.122.xx**  
 **ls /data**  
-** cat /data/data.txt**
+**cat /data/data.txt**
 
 ## Delete the pod
 

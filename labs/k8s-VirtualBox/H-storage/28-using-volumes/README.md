@@ -1,4 +1,4 @@
-# 29 - Using simple volumes
+# 28 - Using simple volumes
 
 In this lab we'll use basic volumes in our pods:  
 No PersistentVolume, no PersistentVolumeClain, no StorageClass.

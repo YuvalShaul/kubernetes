@@ -1,4 +1,4 @@
-# 30 - Persistent Volumes and Claims
+# 29 - Persistent Volumes and Claims
 
 In this lab we'll demonstrate the creation of PersistentVolume(s), and then consuming them using PersistentVolumeClaim(s).
 

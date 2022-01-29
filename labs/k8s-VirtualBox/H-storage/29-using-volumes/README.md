@@ -4,9 +4,9 @@ In this lab we'll use basic volumes in our pods.
 
 - [Create a multi container pod](#Create-a-multi-container-pod)
 - [Things to do in container-a](#Things-to-do-in-container-a)
-- [](#)
-- [](#)
-- [](#)
+- [Things to do in container-b](#Things-to-do-in-container-b)
+- [Look at the volume](#Look-at-the-volume)
+- [Delete the pod](#Delete-the-pod)
 
 ## Create a multi container pod
 
@@ -41,5 +41,28 @@ Each container mounts this volume on a different container path.
 **cat data.txt**
 - exit from the container (**exit**)
 
+## Look at the volume
+
+- Find the specific node where the pod is running:  
+**kubectl get pods -o wide**
+- Connect to another node, and verify that a /data directory does not exist:  
+**ssh osboxes@192.168.122.xx**  
+**ls /data**
+- Connect to the correct node, find the /data directory and view the ontent of the file:  
+**ssh osboxes@192.168.122.xx**  
+**ls /data**  
+** cat /data/data.txt**
+
+## Delete the pod
+
+- Delete the pod:  
+**kubectl delete pods volume-pod**
+- Login again to the node where the pod was running:  
+**ssh osboxes@192.168.122.xx**
+- Verify that:  
+  - the /data directory is still there
+  - the data.txt file and its content were not deleted.
 
 
+
+- Now, delete the pod, and 

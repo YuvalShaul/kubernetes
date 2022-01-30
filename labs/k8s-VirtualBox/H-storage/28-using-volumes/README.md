@@ -3,11 +3,20 @@
 In this lab we'll use basic volumes in our pods:  
 No PersistentVolume, no PersistentVolumeClain, no StorageClass.
 
+- [Look at your nodes](#Look-at-your-nodes)
 - [Create a multi container pod](#Create-a-multi-container-pod)
 - [Things to do in container-a](#Things-to-do-in-container-a)
 - [Things to do in container-b](#Things-to-do-in-container-b)
 - [Look at the volume](#Look-at-the-volume)
 - [Delete the pod](#Delete-the-pod)
+
+
+## Look at your nodes
+
+- Connect to all worker nodes in your cluster, and verify that a /data directory does not exist:  
+**ssh osboxes@192.168.122.xx**  
+**ls /data**
+
 
 ## Create a multi container pod
 

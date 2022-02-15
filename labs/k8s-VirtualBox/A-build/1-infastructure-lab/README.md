@@ -13,7 +13,7 @@ I have tried this on Windows-11 Pro (version 21H2).
 ## Virtual Box
 
 - install (or upgrade) [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- I am using 6.1.30 for this installation.
+- I am using 6.1.32 for this installation.
 - The extension pack is not needed for the lab.
 - The setup program will issue a warning about an interface to be installed.  
 This is OK.

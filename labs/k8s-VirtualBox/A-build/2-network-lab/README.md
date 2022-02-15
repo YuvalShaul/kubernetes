@@ -34,7 +34,8 @@ It is now the time to create a network, and clone it.
   - The Nat Network name is correct (there should onle be 1 option)
   - Click on **Advanced** and make sure that **Cable Connected** is checked.
 - Learn how your single network interface is called:  
-**ip a sh**
+**ip a sh**  
+(in my case: enp0s3)
 - Edit your networking parameters. Create the file name from the interface name:  
   - **sudo vi /etc/sysconfig/network-scripts/ifcfg-\<if name\>**
     - BOOTPROTO=static
@@ -43,6 +44,7 @@ It is now the time to create a network, and clone it.
     - PREFIX=24
     - GATEWAY=192.168.122.1
   - restart your machines
+- If all goes well, you should be able to ping 8.8.8.8
 
 
 ## Add a user
@@ -54,14 +56,16 @@ It is now the time to create a network, and clone it.
 
 ## Clone Machines
 
+- Maybe it is best to leave the template machine...well..as a template.
 - Clone it carefully in VirtualBox - to create 3 workers nodes and one control node:
-  - **Clone when machine is not working**
+  - **Clone when machine is not working !**
   - right-click clone
   - Rename your new machine (k8s-control, k8s-a, k8s-b, k8s-b)
   - create new MAC addresses
   - Full clone !!!
 - Configure 2 or more CPUs for your control node machine( settings/system).
-- Configure networking for your machines (note the required IP addresses)
+- Configure networking for your machines:
+192.168.122.X, where x is 10(k8s-control), 11(k8s-a), 12(k8s-b), 13(k8s-c)
 - Make sure your new machines can work
 
 ## End Results
@@ -71,7 +75,7 @@ It is now the time to create a network, and clone it.
   - 3 kubernetes worker machines: k8s-a, k8s-b, k8s-c
   - 1 kubernetes control machine: k8s-control
   - 1 host machine
-- We'll handle networking at the next lab.
+
 
 
 ## Connect host to control and workers

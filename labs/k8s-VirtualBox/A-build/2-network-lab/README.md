@@ -1,12 +1,15 @@
 # 2 - Network Lab
 
-(back to [1-Infrastructure Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab))  
-This lab assumes you have completed the infrastructure-lab, so that you now have 5 machines in your VirtualBox installation: 3 working nodes, 1 control node, 1 host.
-It is now the time to create a network for them.
+This lab assumes you have completed the [infrastructure-lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/1-infastructure-lab), so that you now have a single machine that will be used as a template.
+It is now the time to create a network, and clone it.
 
 - [Configure NAT Networking](#Configure-NAT-Networking)
 - [IP addresses](#IP-addresses)
+- [Add a user](#Add-a-user)
+- [Clone Machines](#Clone-Machines)
+- [End Results](#End-Results)
 - [Connect host to control and workers](#Connect-host-to-control-and-workers)
+
 
 ## Configure NAT Networking
 
@@ -23,14 +26,53 @@ It is now the time to create a network for them.
 
 ## IP addresses
 
-- Run all nodes, then configure static IP addresses for control and workers.
-- (use **right-ctrl** to from the mouse capture of the virtual machine window)
-  - sudo vi /etc/sysconfig/network-scripts/  (--> press tab again to see your interface configuration file)
-  - BOOTPROTO=static
-  - IPADDR=192.168.122.x (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
-  - NETMASK=255.255.255.0
-  - GATEWAY=192.168.122.1
+- Run your single machine
+- Configure a static IP address:
+- (use **right-ctrl** to exit from the mouse capture of the virtual machine window)
+- Make sure that the machine settings in VirtualBox are correct:
+  - Adapter 1 is enabled and is attached to **NAT Network**
+  - The Nat Network name is correct (there should onle be 1 option)
+  - Click on **Advanced** and make sure that **Cable Connected** is checked.
+- Learn how your single network interface is called:  
+**ip a sh**
+- Edit your networking parameters. Create the file name from the interface name:  
+  - **sudo vi /etc/sysconfig/network-scripts/ifcfg-\<if name\>**
+    - BOOTPROTO=static
+    - IPADDR=192.168.122.x 
+    (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
+    - PREFIX=24
+    - GATEWAY=192.168.122.1
   - restart your machines
+
+
+## Add a user
+- Add a **osboxes** user and add it to the **wheel** group, so that it is a super-user:  
+**useradd -G wheel osboxes**
+- Set a password for the new user (while you are still in root):  
+**passwd osboxes**  
+(you'll be required to type the password twice)
+
+## Clone Machines
+
+- Clone it carefully in VirtualBox - to create 3 workers nodes and one control node:
+  - **Clone when machine is not working**
+  - right-click clone
+  - Rename your new machine (k8s-control, k8s-a, k8s-b, k8s-b)
+  - create new MAC addresses
+  - Full clone !!!
+- Configure 2 or more CPUs for your control node machine( settings/system).
+- Configure networking for your machines (note the required IP addresses)
+- Make sure your new machines can work
+
+## End Results
+
+- You should have:
+  - a VirtualBox installation
+  - 3 kubernetes worker machines: k8s-a, k8s-b, k8s-c
+  - 1 kubernetes control machine: k8s-control
+  - 1 host machine
+- We'll handle networking at the next lab.
+
 
 ## Connect host to control and workers
 

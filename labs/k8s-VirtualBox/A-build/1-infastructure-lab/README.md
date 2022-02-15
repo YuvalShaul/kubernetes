@@ -23,9 +23,9 @@ This is OK.
 
 ## K8S Virtual Machines
 
-- Download Centos 8.4 (server, VirtualBox, vdi file) from osboxes.org  
-    link: https://www.osboxes.org/centos/  
-    user: **osboxes**    pass: **osboxes.org**
+- Download Fedora 35 (server, VirtualBox, vdi file) from osboxes.org.  
+    link: https://www.osboxes.org/fedora/  
+    user: **root**    pass: **osboxes.org**
 - Unzip (I use [7z](https://www.7-zip.org/download.html)) the downloaded file - this is a virtual disk image (VDI) file.
 - VirtualBox: Create a Linux (RedHat 64G) machine (for first worker node)
 - 8192 MB of RAM - 1 virtual cpu (2 for the control node later)
@@ -53,4 +53,4 @@ This is OK.
   - 1 host machine
 - We'll handle networking at the next lab.
 
-(goto [2-Network Lab](https://github.com/YuvalShaul/kubernetes/blob/main/labs/k8s-VirtualBox/2-network-lab/README.md))
+(goto [2-Network Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/2-network-lab))

@@ -21,36 +21,20 @@ This is OK.
     C:\Program Files\Oracle\VirtualBox
   so that you can run VirtualBox cli commands.
 
-## K8S Virtual Machines
+## K8S Virtual Machine Template
 
 - Download Fedora 35 (server, VirtualBox, vdi file) from osboxes.org.  
     link: https://www.osboxes.org/fedora/  
     user: **root**    pass: **osboxes.org**
 - Unzip (I use [7z](https://www.7-zip.org/download.html)) the downloaded file - this is a virtual disk image (VDI) file.
-- VirtualBox: Create a Linux (RedHat 64G) machine (for first worker node)
+- VirtualBox: Create a Linux (RedHat 64G) machine (as a template)
 - 8192 MB of RAM - 1 virtual cpu (2 for the control node later)
 - Use your downloaded VDI file as the system disk.
-- Clone it carefully in VirtualBox - to create 3 workers nodes and one control node:
-  - **Clone when machine is not working**
-  - right-click clone
-  - Rename your new machine (k8s-control, k8s-a, k8s-b, k8s-b)
-  - create new MAC addresses
-  - Full clone !!!
-- Configure 2 or more CPUs for your control node machine( settings/system).  
-- Make sure your new machines can work
+
 
 ## Host Machine
 
 - Create another machine to be used as a host - to connect and configure.
 - I'm using a local Linux (Ubuntu-20) as a host, to control the cluster.
-
-## End Results
-
-- You should have:
-  - a VirtualBox installation
-  - 3 kubernetes worker machines: k8s-a, k8s-b, k8s-c
-  - 1 kubernetes control machine: k8s-control
-  - 1 host machine
-- We'll handle networking at the next lab.
 
 (goto [2-Network Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/2-network-lab))

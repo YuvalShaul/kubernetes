@@ -2,7 +2,7 @@
 
 This lab will guide you through the process of K8S cluster creation.  
 By now, you should have already done 
-[labs-1](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/1-infastructure-lab), 
+[lab-1](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/1-infastructure-lab), 
 [lab-2](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/2-network-lab)   
 Note:  
 If, during your efforts commands stop working (not found) when you use **sudo**, do the following:
@@ -15,7 +15,7 @@ If, during your efforts commands stop working (not found) when you use **sudo**,
 **# Defaults    secure_path = ...**
 
 ## Setting host names
-It is easier to work with meaningfull hostname.  
+It is easier to work with a meaningfull hostname.  
 Command:  
   **sudo hostnamectl set-hostname <host-name>**  (e.g: k8s-a, k8s-b, k8s-c k8s-control)  
 Then, logout and login, to enable the change.
@@ -52,7 +52,7 @@ It will output the text to both the file in action, and the standard output.
 (You can **cat** that file, and see that the commands are there).
 So the kernel will load these module.
 
-I'll also load those modules right now:
+Now, load those modules also right now:
 - **sudo modprobe overlay**
 - **sudo modprobe br_netfilter**
 
@@ -87,6 +87,11 @@ Let's install iproute-tc package:
   --add-repo \  
   https://download.docker.com/linux/centos/docker-ce.repo  
     
+- Fix base url for repository (broken recently):  
+Edit the local docker-ce.repo file at **/etc/yum.repos.d/docker-ce.repo**  
+Change the baseurl for docker-ce-stable to:  
+**https://download.docker.com/linux/centos/7/$basearch/stable**
+
 - Remove conflicting packages:  
 **sudo yum remove -y podman buildah**  
 - Install the containerd.io package:  
@@ -126,7 +131,7 @@ EOF
   - **sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config**  
   This will actually turn off SELinux, which is required.
 - Now for the REAL installations (retry if it fails due to networking problems):  
-**sudo yum install -y kubelet-1.22.0-00 kubeadm-1.22.0-00 kubectl-1.22.0-00  --disableexcludes=kubernetes**
+**sudo yum install -y kubelet-1.22.0-00 kubeadm-1.22.0-00 kubectl-1.22.0-00  --disableexcludes=kubernetes**  
 Notes:  
   - You may need to repeat this command several times, as mirror servers are sometimes not available.
   - ..So retry until you see **Complete!** in all nodes.

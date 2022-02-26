@@ -114,6 +114,8 @@ sudo systemctl start containerd
 - Turn swap off:
   - **sudo swapoff -a**
   - Edit /etc/fstab and insert a '#' at the beginning of the line specifying 'swap'.
+  - Remove swap on ZRAM:  
+  **sudo dnf remove zram-generator-defaults**
 - Install packages:  
   [(see here for more details)](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
   - cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo  

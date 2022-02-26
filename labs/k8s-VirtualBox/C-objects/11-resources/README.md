@@ -9,8 +9,9 @@ In this lab we are going to create service accounts.
 
 ## Installing k8s resource server
 
+- The [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server#kubernetes-metrics-server) is an addon to kubernetes needed for resource monitoring.
 - Install the resource server by applying this file:  
-**kubectl apply -f metrics-server-components.yaml**  
+**kubectl apply -f components.yaml**  
 (if you want to install the server from the official github repository, use [this](https://stackoverflow.com/questions/62138734/metric-server-not-working-unable-to-handle-the-request-get-nodes-metrics-k8s) page to fix it later)
 - You can read more about the metrics server from the [github repository](https://github.com/kubernetes-sigs/metrics-server)
 - Test the installation by using the metric server api:  

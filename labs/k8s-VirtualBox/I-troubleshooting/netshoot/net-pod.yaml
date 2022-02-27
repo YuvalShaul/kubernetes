@@ -4,7 +4,9 @@ metadata:
   name: net-pod
 spec:
   containers:
-  - name: net-a
+  - name: target-container
+    image:  nginx
+  - name: net-container
     image:  nicolaka/netshoot 
     command:
     - sleep

@@ -2,8 +2,15 @@
 
 In this lab we are going to demonstrate [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)  
 
+- [Metrics Server](#Metrics-Server)
 - [Apply a simple deployment](#Apply-a-simple-deployment)
 - [Too much memory required](#Too-much-memory-required)
+
+## Metrics Server
+
+- The [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server#kubernetes-metrics-server) is an addon to kubernetes needed for resource monitoring.
+- We have already described the installation of this server in [lab-11](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/C-objects/11-resources)
+- Verify you have it installed.
 
 ## Apply a simple deployment
 

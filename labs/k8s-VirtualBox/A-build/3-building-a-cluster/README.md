@@ -143,7 +143,8 @@ Notes:
 
 ## Initializing the Cluster
 
-Initialization of the cluster is done just on the control node.  
+**Initialization of the cluster is done just on the control node.**  
+**This is the first time you do things NOT ON ALL MACHINES.**  
 Worker nodes are then joined to the cluster.
 When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
 

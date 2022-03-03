@@ -36,5 +36,7 @@ This is OK.
 
 - Create another machine to be used as a host - to connect and configure.
 - I'm using a local Linux (Ubuntu-20) as a host, to control the cluster.
+- You can use other distributions here (Fedore Workstations for example, or even another server, so non-GUI and work with a tool like [tmux](https://linuxize.com/post/getting-started-with-tmux/)).  
+A GUI based one is easier to work with.  
 
 (goto [2-Network Lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/2-network-lab))

@@ -1,4 +1,4 @@
-# 12 - Labels and Selectors
+# 75 - Labels and Selectors
 
 In this lab we are going to experience the use of labels and selectors.
 

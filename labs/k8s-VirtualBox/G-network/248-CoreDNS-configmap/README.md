@@ -22,7 +22,7 @@ In this lab we experience the configuration of the CoreDNS service.
   - There is just ONE server block there.
   - I takes care of ALL domain names (a single note).
   - Currently, if name resolution fails, it forwards the request to whatever other server is defined in /etc/resolv.conf file (of the Node).
-- To test it:
+- Test this configuration:
   - Run the **dns-pod.yaml** from this lab:  
   **kubectl apply -f dns-pod.yaml**  
   (it is now best to have multiple terminals)
@@ -30,7 +30,7 @@ In this lab we experience the configuration of the CoreDNS service.
   **kubectl exec -it dns-pod -- sh**
   - Verify that ping to **\<ip-address-of-you-pod\>.pod.cluster.loca** works.
   - Verify that ping to **google.com** works
-- Let's change this configuration:  
+- Change this configuration:  
   - Remove the following line (and don't forget to re-apply the configuration):  
   **forward . /etc/resolv.conf**
   - Now try to ping both destinations again. What's the difference?

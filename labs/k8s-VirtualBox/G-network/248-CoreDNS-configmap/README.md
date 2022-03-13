@@ -12,7 +12,7 @@ In this lab we experience the configuration of the CoreDNS service.
 - The main part of the configuration is a "Corefile" configuration that is transferred directly to the CoreDNS configuration.
 - To use this configuration you have to do the following:
   - Apply the ConfigMap file:  
-  **kubectl apply -f <yaml file>**
+  **kubectl apply -f \<yaml file\>**
   - Force CoreDNS to use it by rolling out the CoreDNS deployment:  
   **kubectl rollout restart -n kube-system deployment/coredns**
 

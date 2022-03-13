@@ -11,8 +11,8 @@ spec:
       - example.com
       - google.com
     options:
-      - name: notice
-        value: This came from a None pod policy
+      - name: ndots
+        value: 3
   containers:
   - name: net-container
     image:  nicolaka/netshoot 

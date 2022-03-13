@@ -5,9 +5,7 @@ We'll use this lab to demonstrate DNS configuration done at the pod level.
 - [Cluster DNS service address](#Cluster-DNS-service-address)
 - [DNS ClusterFirst pod configuration](#DNS-ClusterFirst-pod-configuration)
 - [DNS ClusterFirstWithHostNet pod configuration](#DNS-ClusterFirstWithHostNet-pod-configuration)
-- [](#)
-- [](#)
-- [](#)
+- [DNS None pod configuration](#DNS-None-pod-configuration)
 
 ## Cluster DNS service address
 

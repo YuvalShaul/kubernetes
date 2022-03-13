@@ -28,7 +28,7 @@ In this lab we experience the configuration of the CoreDNS service.
   (it is now best to have multiple terminals)
   - Now exec into it:  
   **kubectl exec -it dns-pod -- sh**
-  - Verify that ping to **\<ip-address-of-you-pod\>.pod.cluster.loca** works.
+  - Verify that ping to **\<ip-address-of-you-pod\>.default.pod.cluster.local** works.
   - Verify that ping to **google.com** works
 - Change this configuration (so edit **CoreDNS-configmap-1.yaml**):  
   - Remove the following line (and don't forget to re-apply the configuration):  

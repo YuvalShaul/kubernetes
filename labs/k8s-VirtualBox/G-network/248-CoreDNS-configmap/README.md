@@ -1,4 +1,4 @@
-# 248 - DNS Pod Configuration
+# 248 - CoreDNS server Configuration
 
 In this lab we experience the configuration of the CoreDNS service.
 

@@ -20,13 +20,20 @@ In this lab we experience the configuration of the CoreDNS service.
 
 - Look carefully at **CoreDNS-configmap-1.yaml** from this lab.
   - There is just ONE server block there.
-  - I takes care of ALL domain names.
-  - Currently, if name resolution fails, it forward the request to whatever is defined in /etc/resolv.conf file (of the Node).
+  - I takes care of ALL domain names (a single note).
+  - Currently, if name resolution fails, it forwards the request to whatever other server is defined in /etc/resolv.conf file (of the Node).
+- To test it:
+  - Run the **dns-pod.yaml** from this lab:  
+  **kubectl apply -f dns-pod.yaml**  
+  (it is now best to have multiple terminals)
+  - Now exec into it:  
+  **kubectl exec -it dns-pod -- sh**
   - Verify that ping to **\<ip-address-of-you-pod\>.pod.cluster.loca** works.
   - Verify that ping to **google.com** works
-- Remove the following line (don't forget to re-apply the configuration):  
-**forward . /etc/resolv.conf**  
-Now try to ping both destinations again. What's the difference?
+- Let's change this configuration:  
+  - Remove the following line (and don't forget to re-apply the configuration):  
+  **forward . /etc/resolv.conf**
+  - Now try to ping both destinations again. What's the difference?
 
 ## Multiple server blocks
 
@@ -34,8 +41,9 @@ Now try to ping both destinations again. What's the difference?
   - The first block now takes care ONLY for domains with suffix **cluster.local**
   - THERE IS a forward to default server in the block..but still...
   - Try to ping **google.com**
-- Since it's clear that **google.com** domain name is not taken care of this block, let's add a block for **google.com** (it is comment-out)
-  - Uncomment the block and remember to reload the configuration as explained.
+- Since it's clear that **google.com** domain name is not "covered" by this block, let's add a another block for **google.com**:
+  - Uncomment the block
+  - Reload the configuration as explained on the first section
   - Try to ping **google.com** (or domains that suffix) again.
   - Try to ping your pod again.
   - ...AND...try to ping other domain names (cnn.com  aws.com ...)

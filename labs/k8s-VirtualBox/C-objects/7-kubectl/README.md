@@ -62,7 +62,7 @@ Compare with the output when not sorted:
 
 ## selector
 
-- Filter your output by useng --selector option.  
+- Filter your output by using --selector option.  
 This one works just on labels:  
 **kubectl get pods --selector=app=busybox-1**
 

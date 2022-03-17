@@ -38,11 +38,14 @@ It is now the time to create a network, and clone it.
 (in my case: enp0s3)
 - Edit your networking parameters. Create the file name from the interface name:  
   - **sudo vi /etc/sysconfig/network-scripts/ifcfg-\<if name\>**
+    - TYPE=Ethernet
     - BOOTPROTO=static
     - IPADDR=192.168.122.x 
     (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
     - PREFIX=24
+    - ONBOOT=yes
     - GATEWAY=192.168.122.1
+    - DNS1=8.8.8.8
   - restart your machines
 - If all goes well, you should be able to ping 8.8.8.8
 

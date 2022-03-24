@@ -10,7 +10,7 @@ You may want to do that as part of a maintenance.  S
 
 - Use the deployment.yml and pod.yml files from this lab.
 apply both of them to your cluster (in this order!):  
-**kubectl apply -f deployment.yml**
+**kubectl apply -f deployment.yml**  
 **kubectl apply -f pod.yml**  
 - Make sure that the pod and deployment have beed applied correctly:
 **kubectl get pods -o wide**  

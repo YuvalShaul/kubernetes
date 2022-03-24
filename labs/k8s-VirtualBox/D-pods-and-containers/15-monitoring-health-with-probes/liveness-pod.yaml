@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   labels:
     test: liveness
-  name: liveness-exec
+  name: liveness-pod
 spec:
   containers:
   - name: liveness

@@ -5,7 +5,7 @@ In this lab we are going to demonstrate resource requests.
 - [Too many cpus required](#Too-many-cpus-required)
 - [Too much memory required](#Too-much-memory-required)
 
-## Too many cpus required
+## Too many cpus requested
 
 - Look at **big-cpu-pod.yaml** from this lab.  
 These are the requirements of this pod:
@@ -20,7 +20,7 @@ These are the requirements of this pod:
     - [prefixes for decimal SI units](https://physics.nist.gov/cuu/Units/prefixes.html)
     - [prefixes for binary multiples](https://physics.nist.gov/cuu/Units/binary.html)
   
-## Too much memory required
+## Too much memory requested
 
 - Look at **big-mem-pod.yaml** from this lab.  
 These are the requirements of this pod:
@@ -29,3 +29,19 @@ These are the requirements of this pod:
   - Try to apply this file and create the pod:  
   **kubectl apply -f big-mem-pod.yaml**
   - Use **kubectl get pods** and **kubectl describe pods** to see what happened.
+
+## Limiting resources
+
+- Look at the **pod-to-limit-cpu.yaml**  
+There a 200m cpu limit there, but it it commented out.
+- Run this pod by applying it:  
+**kubectl apply -f pod-to-limit-cpu.yaml**
+- Exec into the pod and run a load in it:
+  - **kubectl exec -it pod-to-limit-cpu -- sh**
+  - Inside the shell:  
+  **for i in 1 2 3 4; do while : ; do : ; done & done**
+  - Monitor from another window:  
+**kubectl top pods**
+  - You should see that the cpu usage is rising to almost 1000m (one complete cpu)
+- Delete the pod, uncomment the limit lines, and re-create the pod.  
+Now the cpu usage should not exceed 200m (as configured).

@@ -12,5 +12,4 @@ spec:
     ports:
     - containerPort: 80
   restartPolicy: OnFailure
-  serviceAccountName: my-sa
   

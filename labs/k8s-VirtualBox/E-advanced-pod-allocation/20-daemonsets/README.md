@@ -1,8 +1,9 @@
 # 20 - Daemonsets
 
-Use this lab we'll demonstrate the use of daemonsets.
+In this lab we'll demonstrate the use of daemonsets.
 
 - [Create a daemonset](#Create-a-daemonset)
+- [Use taints to limit the daemonset](#Use-taints-to-limit-the-daemonset)
 
 ## Create a daemonset
 
@@ -10,6 +11,27 @@ Use this lab we'll demonstrate the use of daemonsets.
 It creates a daemonset that cleans up a volume each 10 seconds.
 - Create the daemonset by applying the file:  
 **kubectl apply -f daemonset-one.yaml**
-- Verify:  
+- Look at the daemonset created:  
+**kubectl get ds**
+- Verify your pods:  
 **kubectl get pods -o wide**
 - You can exec into each of these pods to see that those volumes are really cleared.
+- Delete the daemonset:  
+
+
+## Use taints to limit the daemonset
+
+- Use a taint to limit a specific working node:  
+**kubectl taint nodes k8s-b notrun=daemonsets:NoSchedule**
+- Run your daemonset again:  
+**kubectl apply -f daemonset-one.yaml**
+- Verify your pods:  
+**kubectl get pods -o wide**  
+How many pods are running?  Where?
+- Delete the taint:  
+**kubectl taint nodes k8s-b notrun-**
+- Verify your pods again:  
+**kubectl get pods -o wide**  
+Any changes?
+- Do not forget to delete the daemonset when your'e done.
+

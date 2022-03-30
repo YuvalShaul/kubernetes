@@ -37,4 +37,5 @@ It uses nodeSelector to select a specific node.
 **kubectl apply -f select-pod.yaml**
 - Is your pod running? What's going on?
 **kubectl get pods -o wide**
-- Don't forget to delete your pod, and delete the label.
+- Delete your pod, but DO NOT DELETE THE LABEL.  
+You will fix this in the bext lab.

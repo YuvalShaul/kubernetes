@@ -1,6 +1,6 @@
-# 19 - kubectl Lab
+# 193 - Scheduling nodeSelector Lab
 
-Use this lab we'll demonstrate **nodeSelector** and **nodeName** configurations.
+Use this lab we'll demonstrate **nodeSelector** configurations.
 
 - [Assign labels to nodes](#Assign-labels-to-nodes)
 - [Create your pod](#Create-your-pod)
@@ -24,17 +24,17 @@ It uses nodeSelector to select a specific node.
 **kubectl apply -f select-pod.yaml**
 - Make sure your pod is running in the correct node:  
 **kubectl get pods -o wide**
+- Delete your pod.
+- Delete the label from the node:  
+**kubectl label nodes k8s-b special-**
 
-## Create a nodeName pod
+## The same - on the control node
 
-- Look at the **name-pod.yaml** file from this lab:  
-It uses nodeName to directly select a specific node.  
-**Change the node name to the corect name within your cluster**.
+- Label a node again, this time the control node (same label):  
+**kubectl label nodes k8s-control special=yep**
+- You don't have to change the pod definition, it still uses the same label.
 - Create your pod by applying the file:  
-**kubectl apply -f name-pod.yaml**
-- Make sure your pod is running in the correct node:  
+**kubectl apply -f select-pod.yaml**
+- Is your pod running? What's going on?
 **kubectl get pods -o wide**
-- Delete the pod
-- Edit the **name-pod.yaml** file to specifically name the control node.
-- Apply the file again.  
-Verify that the pod is running on the control node.
+- Don't forget to delete your pod, and delete the label.

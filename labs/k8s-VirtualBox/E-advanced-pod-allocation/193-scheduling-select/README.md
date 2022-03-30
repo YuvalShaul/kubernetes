@@ -1,10 +1,10 @@
-# 193 - Scheduling nodeSelector Lab
+# 193 - Scheduling with nodeSelector
 
 Use this lab we'll demonstrate **nodeSelector** configurations.
 
 - [Assign labels to nodes](#Assign-labels-to-nodes)
 - [Create your pod](#Create-your-pod)
-- [Create a nodeName pod](#Create-a-nodeName-pod)
+- [The same - on the control node](#The-same-on-the-control-node)
 
 ## Assign labels to nodes
 
@@ -28,7 +28,7 @@ It uses nodeSelector to select a specific node.
 - Delete the label from the node:  
 **kubectl label nodes k8s-b special-**
 
-## The same - on the control node
+## The same on the control node
 
 - Label a node again, this time the control node (same label):  
 **kubectl label nodes k8s-control special=yep**

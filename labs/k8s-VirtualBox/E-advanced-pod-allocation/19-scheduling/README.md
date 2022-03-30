@@ -34,3 +34,7 @@ It uses nodeName to directly select a specific node.
 **kubectl apply -f name-pod.yaml**
 - Make sure your pod is running in the correct node:  
 **kubectl get pods -o wide**
+- Delete the pod
+- Edit the **name-pod.yaml** file to specifically name the control node.
+- Apply the file again.  
+Verify that the pod is running on the control node.

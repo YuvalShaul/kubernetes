@@ -2,9 +2,7 @@
 
 Use this lab we'll demonstrate tains and tolerations.
 
-- [Assign labels to nodes](#Assign-labels-to-nodes)
-- [Create your pod](#Create-your-pod)
-- [The same - on the control node](#The-same-on-the-control-node)
+- [A Pod that can tolerate](#A-Pod-that-can-tolerate)
 
 ## A Pod that can tolerate
 

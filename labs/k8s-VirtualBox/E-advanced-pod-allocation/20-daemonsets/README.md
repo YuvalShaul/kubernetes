@@ -17,6 +17,11 @@ It creates a daemonset that cleans up a volume each 10 seconds.
 **kubectl get pods -o wide**
 - You can exec into each of these pods to see that those volumes are really cleared.
 - Delete the daemonset:  
+**kubectl delete ds daemonset-one**  
+or
+**kubectl delete daemonset daemonset-one**  
+or
+**kubectl delete -f daemonset-one.yaml**
 
 
 ## Use taints to limit the daemonset

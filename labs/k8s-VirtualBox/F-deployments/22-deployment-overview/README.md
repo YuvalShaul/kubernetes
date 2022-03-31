@@ -13,7 +13,7 @@ Use this lab we'll demonstrate the creation of deployments.
 **kubectl apply -f my-deployment.yaml**
 - Verify that the deployment and the pods were created:  
 **kubectl get deployments**  
-**kubectl get pods**
+**kubectl get pods -o wide**
 
 ## Scale by using the configuration file
 

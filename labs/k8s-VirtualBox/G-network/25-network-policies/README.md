@@ -42,12 +42,15 @@ Apply this policy:
 **kubectl exec -n other-ns client-pod -- curl \<nginx ip address\>**  
 (you should see the command waiting for a response from the server)
 - Type ctrl-c to exit the command
+- Delete the policy:  
+**kubectl delete -f blocking-np.yaml**
 
 ## Explicitly allow namespace traffic
 
 - Apply the **allow-ns-np.yaml** file from this lab.  
 This file allows traffic coming from any pod within the **other-ns** namespace.  
 - Try the curl command again.
+- (remember to delete the policy)
 
 ## Explicitly allow IP cidr block traffic
 
@@ -56,5 +59,6 @@ Fix the IP address in the cidr block to the IP address of the client pod.
 - Apply the **allow-ip-np.yaml** file from this lab.  
 This file allows traffic coming from a specific pod (the client) using its IP address.
 - Try the curl command again.
+- (remember to delete the policy when you're done)
 
 

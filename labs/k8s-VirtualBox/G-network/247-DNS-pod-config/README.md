@@ -1,4 +1,4 @@
-# 24 - DNS Pod Configuration
+# 247 - DNS Pod Configuration
 
 We'll use this lab to demonstrate DNS configuration done at the pod level.
 

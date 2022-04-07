@@ -23,6 +23,9 @@ In this lab we experience the configuration of the CoreDNS service.
   - I takes care of ALL domain names (a single note).
   - Currently, if name resolution fails, it forwards the request to whatever other server is defined in /etc/resolv.conf file (of the Node).
 - Test this configuration:
+  - Apply the first configuration:  
+  **kubectl apply -f  CoreDNS-configmap-1.yaml**  
+  **kubectl rollout restart -n kube-system deployment/coredns**
   - Run the **dns-pod.yaml** from this lab:  
   **kubectl apply -f dns-pod.yaml**  
   (it is now best to have multiple terminals)

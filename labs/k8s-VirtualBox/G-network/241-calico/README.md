@@ -1,4 +1,4 @@
-# 27 - Calico Operation
+# 241 - Calico Operation
 
 We'll use this lab to get a glimpse of the calico networking plugin.
 

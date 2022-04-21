@@ -1,6 +1,6 @@
-# 18 - Init Pods
+# 18 - Init Containers
 
-In this lab we are going to demonstrate init pods.
+In this lab we are going to demonstrate init containers.
 
 - Look at **init-pod.yaml** file from this lab.
 - It defines a pod with 2 init containers and 1 app container.

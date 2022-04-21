@@ -1,6 +1,6 @@
-# 17 - restart policies
+# 17 - Multi Container Pods
 
-In this lab we are going to demonstrate using probes to monitor containers health.
+In this lab we are going to demonstrate pods with multiple containers.
 
 - Look at **multi-container.yaml** file from this lab.
 - It define:

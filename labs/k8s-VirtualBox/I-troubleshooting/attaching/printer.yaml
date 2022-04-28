@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: printer
+spec:
+  containers:
+  - name: printer-busybox
+    image: busybox
+    command: ['sh', '-c', 'COUNTER=0; while true; do printf "line: $COUNTER\n" ;sleep 1; COUNTER=$((COUNTER + 1));done']
+ 
+ 

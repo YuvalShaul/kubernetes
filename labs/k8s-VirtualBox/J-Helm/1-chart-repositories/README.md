@@ -13,3 +13,15 @@
 **helm repo index ./1-chart-repositories/**
 - See the indexing result:  
 ** ls -l**
+
+
+## Add files to github pages
+
+
+- Add the repo:  
+**helm repo add custom https://yuvalshaul.github.io/repo1/**
+- List the repositories helm now knows about:  
+**helm repo list**
+- Now let's remove the default repository:  
+**helm repo remove stable**  
+(and list again)

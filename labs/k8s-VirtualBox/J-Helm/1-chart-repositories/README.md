@@ -25,3 +25,10 @@
 - Now let's remove the default repository:  
 **helm repo remove stable**  
 (and list again)
+- Update:  
+**helm repo update**  
+(it should update just from custom repository)
+- Now let's search for spark:  
+**helm search repo spark**  
+(the answer is coming from the new repository)
+

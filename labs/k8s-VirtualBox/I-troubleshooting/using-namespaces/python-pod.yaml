@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-pod
+spec:
+  containers:
+  - name: python-conter
+    image:  yuvalshaul/python-counter
+    command:
+    - "python"
+    - "python-counter.py"

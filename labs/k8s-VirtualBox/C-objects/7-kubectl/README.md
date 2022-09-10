@@ -1,4 +1,4 @@
-# 7 - kubectl Lab
+# Many PODS Lab
 
 Use this lab to get some hands-on experience with kubectl commands.
 

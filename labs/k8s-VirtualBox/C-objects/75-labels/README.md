@@ -1,12 +1,12 @@
-# 75 - Labels and Selectors
+# Labels and Selectors
 
 In this lab we are going to experience the use of labels and selectors.
 
 
-- [Create some pods](#Create-some-pods)
-- [Use equality-based selectors](#Use-equality-based-selectors)
-- [Use set-based selectors](#Use-set-based-selectors)
-- [Some complex examples](#Some-complex-examples)
+- [create some pods](#create-some-pods)
+- [use equality-based selectors](#use-equality-based-selectors)
+- [use set-based selectors](#use-set-based-selectors)
+- [some complex examples](#some-complex-examples)
 
 ## Create some pods
 

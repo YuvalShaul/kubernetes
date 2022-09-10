@@ -2,19 +2,19 @@
 
 Use this lab to get some hands-on experience with kubectl commands.
 
-- [Preparations](#Preparations)
-- [Experiment with kubectl](#Experiment-with-kubectl)
-- [JSONPATH](#JSONPATH)
+- [preparations](#preparations)
+- [experiment with kubectl](#experiment-with-kubectl)
+- [JSONPATH](#jsonpath)
 - [sort-by](#sort-by)
 - [selector](#selector)
 
-## Preparations
+## preparations
 
 create the following deployments:
 - **kubectl apply -f many-pods1.yaml**
 - **kubectl apply -f many-pods2.yaml**
 
-## Experiment with kubectl
+## experiment with kubectl
 
 - Get a list of pods:  
 **kubectl get pods**
@@ -27,7 +27,7 @@ create the following deployments:
 It is not very readable...  
 In the next section we'll see how to get some usefull info from it.
 
-## JSONPATH
+## jsonpath
 
 The jsonpath language can be used to select parts of the json output.  
 It was inspired by XPath, a similar language for 

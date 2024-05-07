@@ -17,6 +17,14 @@ In this lab we are going to create service accounts.
 - Test the installation by using the metric server api:  
 **kubectl get --raw /apis/metrics.k8s.io/**
 
+## Installing the resource server for minikube
+- First, use these 2 commands on your cluster:
+```
+minikube addons enable metrics-server -p <your-cluster>
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+- Your server should now be running
+
 ## Use the top command
 
 - Make sure you delete pods that were created in previous labs.
